@@ -46,7 +46,7 @@ export default function Hero({}: Props) {
   return (
     <SectionWrapper bgColor='#EBF4F3'>
       <Container>
-        <Box sx={{ display: 'flex', justifyContent: 'center', columnGap: '1rem' }}>
+        <Box sx={{ display: 'flex', justifyContent: 'center', columnGap: '1rem', mt: {xs: '2rem', md: '3rem'} }}>
             <CarouselComponent>
               {dataImages.map((data,index) => (
                 <SwiperSlide key={index}>

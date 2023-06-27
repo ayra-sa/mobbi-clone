@@ -1,14 +1,17 @@
+import { Facebook, Instagram, Twitter, YouTube } from "@mui/icons-material";
 import {
   Box,
   Container,
   Grid,
   Typography,
-  useTheme,
   Link,
   List,
   ListItem,
   ListItemText,
+  Stack,
+  IconButton,
 } from "@mui/material";
+import ImageItem from "./ImageItem";
 
 type Props = {};
 
@@ -25,10 +28,53 @@ const footerLinkMenuPelayanan = [
   { menu: "Service Mobil", href: "" },
 ];
 
+const socialMedia = [
+  {
+    label: "facebook",
+    link: "htpps://facebook.com",
+    icon: <Facebook />,
+  },
+  {
+    label: "instagram",
+    link: "instagram.com",
+    icon: <Instagram />,
+  },
+  {
+    label: "twitter",
+    link: "twitter.com",
+    icon: <Twitter />,
+  },
+  {
+    label: "youtube",
+    link: "youtube.com",
+    icon: <YouTube />,
+  },
+];
+
+const mitra = [
+  {
+    image: 'https://placeimg.com/150/50/any'
+  },
+  {
+    image: 'https://placeimg.com/150/50/any'
+  },
+  {
+    image: 'https://placeimg.com/150/50/any'
+  },
+  {
+    image: 'https://placeimg.com/150/50/any'
+  },
+  {
+    image: 'https://placeimg.com/150/50/any'
+  },
+  {
+    image: 'https://placeimg.com/150/50/any'
+  },
+]
+
 export default function Footer({}: Props) {
-  const theme = useTheme();
   return (
-    <Box component="footer" sx={{ bgcolor: '#02A3FE', py: 4, color: 'white' }}>
+    <Box component="footer" sx={{ bgcolor: "#02A3FE", py: 4, color: "white" }}>
       <Container>
         <Grid container spacing={5}>
           <Grid item xs={12} sm={4}>
@@ -36,11 +82,22 @@ export default function Footer({}: Props) {
               <Typography variant="h6">Logo</Typography>
             </Link>
             <Typography>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Pusat Jual Beli Mobil, Motor Bekas dan Service di Batam
             </Typography>
+            <Stack direction={"row"} spacing={1}>
+              {socialMedia.map((socmed) => (
+                <IconButton
+                  key={socmed.label}
+                  href={socmed.link}
+                  color="inherit"
+                >
+                  {socmed.icon}
+                </IconButton>
+              ))}
+            </Stack>
           </Grid>
           <Grid item xs={12} sm={4}>
-            <Box sx={{ display: 'flex', columnGap: '1rem' }}>
+            <Box sx={{ display: "flex", columnGap: "1rem" }}>
               <Box>
                 <Typography variant="h6">Lokasi</Typography>
                 <List component="ul">
@@ -84,10 +141,14 @@ export default function Footer({}: Props) {
             </Box>
           </Grid>
           <Grid item xs={12} sm={4}>
-            <Typography variant="h6">Kolom 3</Typography>
-            <Typography>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            </Typography>
+            <Typography variant="h6">Mitra Kami</Typography>
+            <Grid container spacing={1}>
+              {mitra.map((m, index) => (
+                <Grid key={index} item xs={4}>
+                  <ImageItem image={m.image} alt="mitra logo" />
+                </Grid>
+              ))}
+            </Grid>
           </Grid>
         </Grid>
       </Container>

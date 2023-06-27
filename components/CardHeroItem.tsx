@@ -14,14 +14,14 @@ type Props = {
 
 export default function CardHeroItem({ image, title }: Props) {
   return (
-    <Card sx={{borderRadius: '20px'}}>
+    <Card sx={{borderRadius: '18px'}}>
       <CardActionArea>
         <CardMedia
           component="img"
           height="200"
           image={image}
           alt={title}
-          sx={{ padding: "10px 10px 0 10px", borderRadius: '20px' }}
+          sx={{ padding: "10px 10px 0 10px", borderRadius: '18px' }}
         />
         <CardContent>
           <Typography gutterBottom variant="subtitle2" component="b">

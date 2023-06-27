@@ -58,11 +58,11 @@ export default function News({}: Props) {
   return (
     <SectionWrapper bgColor="#EBF4F3">
       <Container>
-        <Box sx={{ display: "flex", columnGap: "1rem" }}>
-          <Typography variant="h3" width={"30%"} component="h2">
+        <Box sx={{ display: "flex", columnGap: "1rem", flexDirection: { xs: 'column', md: 'row' } }}>
+          <Typography variant="h3" sx={{width: {xs: '100%', md: '30%'}}} component="h2">
             Berita, Tips & Review
           </Typography>
-          <Box sx={{width: '70%'}}>
+          <Box sx={{width: {xs: '100%', md: '70%'}}}>
             <CarouselComponent>
                 {slides.map((slide, index) => (
                 <SwiperSlide key={index}>

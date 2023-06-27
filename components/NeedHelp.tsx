@@ -10,10 +10,11 @@ export default function NeedHelp({}: Props) {
         <Box
           sx={{
             py: "3rem",
+            px: {xs: '1rem', md: '0'},
             borderRadius: "1rem",
             textAlign: "center",
             bgcolor: "#105A7F",
-            maxWidth: "80%",
+            maxWidth: {xs: "100%", md: "80%"},
             marginX: "auto",
             color: "white",
           }}

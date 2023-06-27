@@ -34,13 +34,13 @@ export default function TestimonialSlide({
       sx={{
         display: currentIndex === index ? "flex" : "none",
         flexDirection: "column",
-        alignItems: "flex-start",
+        alignItems: "flex-start"
       }}
     >
       <Typography variant="h5" component={"h2"}>
         {title}
       </Typography>
-      <Typography variant="body1" component={"p"}>
+      <Typography variant="body1" component={"p"} sx={{mt: '10px'}}>
         {description}
       </Typography>
 
@@ -49,8 +49,8 @@ export default function TestimonialSlide({
           display: "inline-flex",
           p: "10px",
           columnGap: "20px",
-          mt: "1rem",
-          width: '40%'
+          mt: "2rem",
+          width: {xs: 'auto', md: '40%'}
         }}
         elevation={3}
       >

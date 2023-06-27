@@ -57,8 +57,16 @@ export default function Testimonial({}: Props) {
             </Typography>
           </Box>
 
-          <Box sx={{ display: "flex", alignItems: "center", columnGap: '2rem' }}>
-            <Box sx={{ flex: "1", position: "relative" }}>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: { xs: "flex-start", md: "center" },
+              gap: "2rem",
+              flexDirection: { xs: "column-reverse", md: "row" },
+              mt: {xs: '1.5rem', md: '6px'}
+            }}
+          >
+            <Box sx={{ flex: "1", position: "relative", width: {xs: '100%', md: 'auto'} }}>
               {testimonialData.map((data, index) => (
                 <TestimonialSlide
                   key={index}
@@ -71,7 +79,15 @@ export default function Testimonial({}: Props) {
                   currentIndex={currentIndex}
                 />
               ))}
-              <Box sx={{ position: "absolute", right: "0", bottom: "0", display: 'flex', columnGap: '10px' }}>
+              <Box
+                sx={{
+                  position: "absolute",
+                  right: "0",
+                  bottom: "0",
+                  display: "flex",
+                  columnGap: "10px",
+                }}
+              >
                 <ButtonPrev handleClick={previousImage} />
                 <ButtonNext handleClick={nextImage} />
               </Box>

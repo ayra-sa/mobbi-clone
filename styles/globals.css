@@ -38,10 +38,16 @@ a {
 }
 
 .swiper-pagination {
-  text-align: left !important;
+  text-align: center !important;
   margin-top: 3rem !important;
   bottom: 10px !important;
   position: relative !important;
+}
+
+@media (min-width: '768px') {
+  .swiper-pagination {
+    text-align: left !important;
+  }
 }
 
 .swiper-pagination-bullet {
