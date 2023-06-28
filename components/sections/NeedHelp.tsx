@@ -1,18 +1,18 @@
 import { Box, Container, Typography, Button } from "@mui/material";
-import SectionWrapper from "./SectionWrapper";
+import SectionWrapper from "../SectionWrapper";
 
 type Props = {};
 
 export default function NeedHelp({}: Props) {
   return (
-    <SectionWrapper>
-      <Container>
+    <Box>
+      <Container sx={{px: {xs: 0, sm: 1}}}>
         <Box
           sx={{
             py: "3rem",
-            px: {xs: '1rem', md: '0'},
-            borderRadius: "1rem",
-            textAlign: "center",
+            px: {xs: '1rem', md: '2rem'},
+            borderRadius: {xs: 0, md: "1rem"},
+            textAlign: "left",
             bgcolor: "#105A7F",
             maxWidth: {xs: "100%", md: "80%"},
             marginX: "auto",
@@ -29,13 +29,13 @@ export default function NeedHelp({}: Props) {
 
           <Button
             variant="contained"
-            color="primary"
+            color="secondary"
             sx={{ mt: "3rem", textTransform: "capitalize" }}
           >
             Hubungi Kami
           </Button>
         </Box>
       </Container>
-    </SectionWrapper>
+    </Box>
   );
 }

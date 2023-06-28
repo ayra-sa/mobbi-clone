@@ -74,7 +74,7 @@ const mitra = [
 
 export default function Footer({}: Props) {
   return (
-    <Box component="footer" sx={{ bgcolor: "#02A3FE", py: 4, color: "white" }}>
+    <Box component="footer" sx={{ bgcolor: "#17376D", py: 4, color: "white" }}>
       <Container>
         <Grid container spacing={5}>
           <Grid item xs={12} sm={4}>

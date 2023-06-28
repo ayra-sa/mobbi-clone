@@ -1,10 +1,11 @@
 import Head from 'next/head'
 import Layout from '@/components/Layout'
-import Hero from '@/components/Hero'
-import TabsComponent from '@/components/TabsComponent'
-import NeedHelp from '@/components/NeedHelp'
-import News from '@/components/News'
+import Hero from '@/components/sections/Hero'
+import TabsComponent from '@/components/tabs/TabsComponent'
+import NeedHelp from '@/components/sections/NeedHelp'
+import News from '@/components/sections/News'
 import Testimonial from '@/components/Testimonial'
+import Why from '@/components/sections/Why'
 
 
 export default function Home() {
@@ -20,8 +21,9 @@ export default function Home() {
         <Hero />
         <TabsComponent />
         <News />
-        <Testimonial />
+        {/* <Testimonial /> */}
         <NeedHelp />
+        <Why />
       </main>
     </Layout>
   )

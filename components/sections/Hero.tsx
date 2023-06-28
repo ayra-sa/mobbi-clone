@@ -1,8 +1,9 @@
 import {Box, Container, Toolbar} from '@mui/material'
-import CarouselComponent from './CarouselComponent'
+import CarouselComponent from '../CarouselComponent'
 import { SwiperSlide } from 'swiper/react';
-import CardHeroItem from './CardHeroItem';
-import SectionWrapper from './SectionWrapper';
+import CardHeroItem from '../CardHeroItem';
+import SectionWrapper from '../SectionWrapper';
+import CarouselHero from '../carousel/CarouselHero';
 
 
 type Props = {}
@@ -44,9 +45,9 @@ const dataImages = [
 
 export default function Hero({}: Props) {
   return (
-    <SectionWrapper bgColor='#EBF4F3'>
+    <Box sx={{bgcolor: '#17376D', pb: '4rem', pt: '7rem'}}>
       <Container>
-        <Box sx={{ display: 'flex', justifyContent: 'center', columnGap: '1rem', mt: {xs: '2rem', md: '3rem'} }}>
+        {/* <Box sx={{ display: 'flex', justifyContent: 'center', columnGap: '1rem', mt: {xs: '2rem', md: '3rem'} }}>
             <CarouselComponent>
               {dataImages.map((data,index) => (
                 <SwiperSlide key={index}>
@@ -54,8 +55,9 @@ export default function Hero({}: Props) {
                 </SwiperSlide>
               ))}
             </CarouselComponent>
-        </Box>
+        </Box> */}
       </Container>
-    </SectionWrapper>
+        <CarouselHero />
+    </Box>
   )
 }

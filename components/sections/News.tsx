@@ -1,8 +1,9 @@
-import { Box, Container, Typography } from "@mui/material";
-import SectionWrapper from "./SectionWrapper";
-import CardItem from "./CardItem";
-import CarouselComponent from "./CarouselComponent";
+import { Box, Button, Card, CardActionArea, CardActions, CardContent, CardMedia, Container, Grid, Link, Typography } from "@mui/material";
+import SectionWrapper from "../SectionWrapper";
+import CardItem from "../CardItem";
+import CarouselComponent from "../CarouselComponent";
 import { SwiperSlide } from "swiper/react";
+import CardNews from "../card/CardNews";
 
 type Props = {};
 
@@ -58,24 +59,23 @@ export default function News({}: Props) {
   return (
     <SectionWrapper bgColor="#EBF4F3">
       <Container>
-        <Box sx={{ display: "flex", columnGap: "1rem", flexDirection: { xs: 'column', md: 'row' } }}>
-          <Typography variant="h3" sx={{width: {xs: '100%', md: '30%'}}} component="h2">
-            Berita, Tips & Review
+        <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+          <Typography variant="h6" component={"h4"}>
+            Berita, Tips Review
           </Typography>
-          <Box sx={{width: {xs: '100%', md: '70%'}}}>
-            <CarouselComponent>
-                {slides.map((slide, index) => (
-                <SwiperSlide key={index}>
-                    <CardItem
-                    imageSrc={slide.image}
-                    link={slide.link}
-                    title={slide.title}
-                    />
-                </SwiperSlide>
-                ))}
-            </CarouselComponent>
-          </Box>
+          <Link href="#" underline="none">Lainya</Link>
         </Box>
+        <Grid container spacing={0}>
+          <Grid item xs>
+            <CardNews />
+          </Grid>
+          <Grid item xs>
+            <CardNews />
+          </Grid>
+          <Grid item xs>
+            <CardNews />
+          </Grid>
+        </Grid>
       </Container>
     </SectionWrapper>
   );

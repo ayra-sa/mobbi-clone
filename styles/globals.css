@@ -33,7 +33,7 @@ a {
   cursor: not-allowed;
 }
 
-.swiper-wrapper {
+/* .swiper-wrapper {
   height: auto !important;
 }
 
@@ -63,7 +63,7 @@ a {
 
 .swiper-pagination-bullet-active {
   background-color: #147C71 !important;
-}
+} */
 
 /* @media (prefers-color-scheme: dark) {
   html {

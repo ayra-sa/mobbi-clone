@@ -1,30 +1,34 @@
 import { Tabs, Tab, Typography, Box, Container, Button, useMediaQuery, useTheme } from "@mui/material";
-import { useState } from "react";
-import SectionWrapper from "./SectionWrapper";
-import ImageItem from "./ImageItem";
+import { ReactNode, SyntheticEvent, useState } from "react";
+import SectionWrapper from "../SectionWrapper";
+import ImageItem from "../ImageItem";
 import { CarRental, Garage, Inventory, Sell, TwoWheeler } from "@mui/icons-material";
+import TabPanel from "./TabPanel";
+import RangeSliderInput from "../inputs/RangeSliderInput";
+import BeliMobilContent from "./BeliMobilContent";
+import OtherContent from "./OtherContent";
 
-interface TabPanelProps {
-  children?: React.ReactNode;
-  index: number;
-  value: number;
-}
+// interface TabPanelProps {
+//   children?: ReactNode;
+//   index: number;
+//   value: number;
+// }
 
-function TabPanel(props: TabPanelProps) {
-  const { children, value, index, ...other } = props;
+// function TabPanel(props: TabPanelProps) {
+//   const { children, value, index, ...other } = props;
 
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}
-    >
-      {value === index && <Box sx={{ p: {xs: 1, md: 3} }}>{children}</Box>}
-    </div>
-  );
-}
+//   return (
+//     <div
+//       role="tabpanel"
+//       hidden={value !== index}
+//       id={`simple-tabpanel-${index}`}
+//       aria-labelledby={`simple-tab-${index}`}
+//       {...other}
+//     >
+//       {value === index && <Box sx={{ p: {xs: 1, md: 3} }}>{children}</Box>}
+//     </div>
+//   );
+// }
 
 function a11yProps(index: number) {
   return {
@@ -43,44 +47,19 @@ const tabData = [
 
 const tabPanelData = [
   {
-    label: "Beli Mobil",
-    title: "Jual Mobil Anda di Showroom sekarang juga.",
-    desc: "Jual dengan harga tinggi",
-    link: "#",
-    image: "https://placeimg.com/640/480/tech",
-    button: "Jual Sekarang"
+    component: <OtherContent />
   },
   {
-    label: "Jual Mobil",
-    title: "Jual Mobil Anda di Showroom sekarang juga.",
-    desc: "Jual dengan harga tinggi",
-    link: "#",
-    image: "https://placeimg.com/640/480/people",
-    button: "Jual Sekarang"
+    component: <OtherContent />
   },
   {
-    label: "Beli Motor",
-    title: "Jual Mobil Anda di Showroom sekarang juga.",
-    desc: "Jual dengan harga tinggi",
-    link: "#",
-    image: "https://placeimg.com/640/480/nature",
-    button: "Jual Sekarang"
+    component: <OtherContent />
   },
   {
-    label: "Rental Mobil",
-    title: "Jual Mobil Anda di Showroom sekarang juga.",
-    desc: "Jual dengan harga tinggi",
-    link: "#",
-    image: "https://placeimg.com/640/480/tech",
-    button: "Jual Sekarang"
+    component: <OtherContent />
   },
   {
-    label: "Bengkel",
-    title: "Jual Mobil Anda di Showroom sekarang juga.",
-    desc: "Jual dengan harga tinggi",
-    link: "#",
-    image: "https://placeimg.com/640/480/tech",
-    button: "Jual Sekarang"
+    component: <OtherContent />
   },
 ];
 
@@ -89,7 +68,7 @@ export default function TabsComponent() {
   const theme = useTheme()
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
 
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+  const handleChange = (event: SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
 
@@ -126,7 +105,8 @@ export default function TabsComponent() {
           <Box sx={{ width: "100%" }}>
             {tabPanelData.map((data, index) => (
               <TabPanel key={index} value={value} index={index}>
-                <Typography variant="h2" component={"h1"}>
+                {data.component}
+                {/* <Typography variant="h2" component={"h1"}>
                   {data.label}
                 </Typography>
                 <Box sx={{ display: "flex", alignItems: {xs: 'unset', md: 'center'}, gap: '50px', mt: '2rem', flexDirection: {xs: 'column-reverse', md: 'row'} }}>
@@ -148,7 +128,7 @@ export default function TabsComponent() {
                   <Box sx={{flex: '1'}}>
                     <ImageItem alt={data.title} image={data.image} />
                   </Box>
-                </Box>
+                </Box> */}
               </TabPanel>
             ))}
           </Box>
