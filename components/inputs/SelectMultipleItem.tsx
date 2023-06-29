@@ -1,15 +1,25 @@
-import { Checkbox, FormControl, InputLabel, ListItemText, MenuItem, OutlinedInput, Select, SelectChangeEvent, styled } from "@mui/material";
+import {
+  Checkbox,
+  FormControl,
+  InputLabel,
+  ListItemText,
+  MenuItem,
+  OutlinedInput,
+  Select,
+  SelectChangeEvent,
+  styled,
+} from "@mui/material";
 import { useState } from "react";
 
 type Option = {
-  label: string
-  value: string
-}
+  label: string;
+  value: string;
+};
 
 type Props = {
-  options: Option[]
-  value: string[]
-  placeholder?: string
+  options: Option[];
+  value: string[];
+  placeholder?: string;
   handleChange: (event: SelectChangeEvent<string | string[]>) => void;
 };
 
@@ -40,8 +50,8 @@ const names = [
 const SelectContainer = styled(Select)(({ theme }) => ({
   borderRadius: "10px",
   // backgroundColor: "red",
-  border: '0',
-  outline: '0'
+  border: "0",
+  outline: "0",
   // "&:hover": {
   //   backgroundColor: alpha(theme.palette.common.white, 0.25),
   // },
@@ -51,11 +61,16 @@ const SelectContainer = styled(Select)(({ theme }) => ({
   // },
 }));
 
-export default function SelectMultipleItem({options, placeholder, value, handleChange}: Props) {
+export default function SelectMultipleItem({
+  options,
+  placeholder,
+  value,
+  handleChange,
+}: Props) {
   return (
     <FormControl>
       <Select
-      variant="standard"
+        variant="standard"
         multiple
         displayEmpty
         value={value}
@@ -63,10 +78,10 @@ export default function SelectMultipleItem({options, placeholder, value, handleC
         // input={<OutlinedInput color="primary" />}
         renderValue={(selected) => {
           if (selected.length === 0) {
-            return <span>Placeholder</span>;
+            return <span>Transmisi</span>;
           }
 
-          return selected.join(', ');
+          return selected.join(", ");
         }}
         MenuProps={MenuProps}
       >

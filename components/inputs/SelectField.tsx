@@ -1,42 +1,38 @@
-import { Box, FormControl, InputLabel, MenuItem, NativeSelect, Select, SelectChangeEvent } from '@mui/material';
-import React, { useState } from 'react'
+import {
+  Box,
+  FormControl,
+  MenuItem,
+  Select,
+  SelectChangeEvent,
+  styled,
+} from "@mui/material";
+import React, { useState } from "react";
 
 type Props = {
-    defaultValue: string | number
-    options: string[] | number[]
-}
+  defaultValue: string | number;
+  options: string[] | number[];
+};
 
-export default function SelectField({defaultValue, options}: Props) {
-    const [optionValue, setOptionValue] = useState('');
+export default function SelectField({ defaultValue, options }: Props) {
 
-    const handleChange = (event: SelectChangeEvent) => {
-      setOptionValue(event.target.value as string);
-    };
+  const StyledSelect = styled(Select)({
+    border: '0',
+    outline: '0',
+    backgroundColor: 'transparent',
+    padding: '0',
+  })
 
-    // const options = [
-    //     {value: 'certified', label: 'Certified'},
-    //     {value: 'lelang', label: 'Lelang'},
-    //   ]
-  
-    return (
-      <Box>
-        <FormControl fullWidth>
-          <Select
-        //   variant='standard'
-            // labelId="demo-simple-select-label"
-            // id="demo-simple-select"
-            // value={optionValue}
-            defaultValue={defaultValue}
-            // label="Age"
-            // onChange={handleChange}
-          >
-            {options.map(option => (
-                <MenuItem key={option} value={option}>{option}</MenuItem>
-            ))}
-            {/* <MenuItem value={20}>Twenty</MenuItem>
-            <MenuItem value={30}>Thirty</MenuItem> */}
-          </Select>
-        </FormControl>
-      </Box>
-    );
+  return (
+    <Box>
+      <FormControl fullWidth sx={{ '& .MuiSelect-outlined': { border: 'none' } }}>
+        <Select defaultValue={defaultValue} variant="outlined">
+          {options.map((option) => (
+            <MenuItem key={option} value={option}>
+              {option}
+            </MenuItem>
+          ))}
+        </Select>
+      </FormControl>
+    </Box>
+  );
 }
