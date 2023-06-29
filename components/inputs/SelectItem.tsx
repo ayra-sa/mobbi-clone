@@ -9,26 +9,32 @@ import RangeSliderInput from "./RangeSliderInput";
 
 
 type Props = {
-//   value: string;
-//   handleChange: (event: SelectChangeEvent) => void;
-//   handleChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  value: string | number;
+  onChange: (value: string | number) => void;
+  options: { value: string | number; label: string }[];
+  defaultValue?: string | number
+  // handleChange: (event: ChangeEvent<HTMLInputElement>) => void;
   // options: Option[]
-//   children: ReactNode;
+  // children: ReactNode;
 };
 
-export default function SelectItem({ }: Props) {
+export default function SelectItem({ value, onChange, options, defaultValue }: Props) {
+  const handleChange = (event: ChangeEvent<{ value: unknown }>) => {
+    const selectedValue = event.target.value as string | number;
+    onChange(selectedValue);
+  };
+
   return (
-    <FormControl>
-      <Select
-        value={number}
-        onChange={handleInputChange}
-        displayEmpty
-        type=""
-        inputProps={{ "aria-label": "Without label" }}
-      >
-        <RangeSliderInput defaultValue={numbers} max={2000} min={100} inputMax={2000} />
-        {/* {children} */}
-      </Select>
-    </FormControl>
+    <div>
+      <FormControl variant="standard">
+        <Select value={value} onChange={handleChange} displayEmpty>
+          {options.map((option) => (
+            <MenuItem key={option.value} value={option.value}>
+              {option.label}
+            </MenuItem>
+          ))}
+        </Select>
+      </FormControl>
+    </div>
   );
 }

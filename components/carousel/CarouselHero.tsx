@@ -16,7 +16,6 @@ export default function CarouselHero({}: Props) {
   return (
     <Swiper
       slidesPerView={3}
-      // centeredSlides={true}
       spaceBetween={30}
       pagination={{
         clickable: true,
@@ -25,7 +24,6 @@ export default function CarouselHero({}: Props) {
       navigation
       autoplay
       modules={[Pagination, Navigation, Autoplay]}
-      // className="mySwiper"
     >
       <SwiperSlide>
         <Box>

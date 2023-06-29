@@ -17,7 +17,7 @@ import { Menu, Person } from "@mui/icons-material";
 import { useState } from "react";
 import DropdownMenu from "./DropdownMenu";
 import NavMobile from "./NavMobile";
-import SearchBar from "./SearchBar";
+import SearchBar from "../inputs/SearchBar";
 
 
 const navItems = [

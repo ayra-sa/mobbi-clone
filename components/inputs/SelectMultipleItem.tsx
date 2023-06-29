@@ -1,9 +1,15 @@
-import { Checkbox, FormControl, InputLabel, ListItemText, MenuItem, Select, SelectChangeEvent } from "@mui/material";
+import { Checkbox, FormControl, InputLabel, ListItemText, MenuItem, OutlinedInput, Select, SelectChangeEvent, styled } from "@mui/material";
 import { useState } from "react";
 
+type Option = {
+  label: string
+  value: string
+}
+
 type Props = {
-  options: string[]
+  options: Option[]
   value: string[]
+  placeholder?: string
   handleChange: (event: SelectChangeEvent<string | string[]>) => void;
 };
 
@@ -13,7 +19,7 @@ const MenuProps = {
   PaperProps: {
     style: {
       maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-      width: 250,
+      // width: 250,
     },
   },
 };
@@ -31,30 +37,43 @@ const names = [
   "Kelly Snyder",
 ];
 
-export default function SelectMultipleItem({options, value, handleChange}: Props) {
-  // const [personName, setPersonName] = useState<string[]>([]);
+const SelectContainer = styled(Select)(({ theme }) => ({
+  borderRadius: "10px",
+  // backgroundColor: "red",
+  border: '0',
+  outline: '0'
+  // "&:hover": {
+  //   backgroundColor: alpha(theme.palette.common.white, 0.25),
+  // },
+  // [theme.breakpoints.up("sm")]: {
+  //   marginLeft: theme.spacing(1),
+  //   width: "auto",
+  // },
+}));
 
-  // const handleChange = (event: SelectChangeEvent<typeof personName>) => {
-  //   const {
-  //     target: { value },
-  //   } = event;
-  //   setPersonName(typeof value === "string" ? value.split(",") : value);
-  // };
+export default function SelectMultipleItem({options, placeholder, value, handleChange}: Props) {
   return (
-    <FormControl sx={{ m: 1, width: 300 }}>
-      {/* <InputLabel id="demo-multiple-checkbox-label">Tag</InputLabel> */}
+    <FormControl>
       <Select
+      variant="standard"
         multiple
+        displayEmpty
         value={value}
         onChange={handleChange}
-        // input={<OutlinedInput label="Tag" />}
-        renderValue={(selected) => selected.join(", ")}
+        // input={<OutlinedInput color="primary" />}
+        renderValue={(selected) => {
+          if (selected.length === 0) {
+            return <span>Placeholder</span>;
+          }
+
+          return selected.join(', ');
+        }}
         MenuProps={MenuProps}
       >
         {options.map((option) => (
-          <MenuItem key={option} value={option}>
-            <ListItemText primary={option} />
-            <Checkbox checked={value.indexOf(option) > -1} />
+          <MenuItem key={option.value} value={option.value}>
+            <ListItemText primary={option.label} />
+            <Checkbox checked={value.indexOf(option.value) > -1} />
           </MenuItem>
         ))}
       </Select>

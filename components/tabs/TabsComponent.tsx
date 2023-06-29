@@ -1,34 +1,27 @@
-import { Tabs, Tab, Typography, Box, Container, Button, useMediaQuery, useTheme } from "@mui/material";
+import {
+  Tabs,
+  Tab,
+  Typography,
+  Box,
+  Container,
+  Button,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 import { ReactNode, SyntheticEvent, useState } from "react";
 import SectionWrapper from "../SectionWrapper";
 import ImageItem from "../ImageItem";
-import { CarRental, Garage, Inventory, Sell, TwoWheeler } from "@mui/icons-material";
+import {
+  CarRental,
+  Garage,
+  Inventory,
+  Sell,
+  TwoWheeler,
+} from "@mui/icons-material";
 import TabPanel from "./TabPanel";
 import RangeSliderInput from "../inputs/RangeSliderInput";
 import BeliMobilContent from "./BeliMobilContent";
 import OtherContent from "./OtherContent";
-
-// interface TabPanelProps {
-//   children?: ReactNode;
-//   index: number;
-//   value: number;
-// }
-
-// function TabPanel(props: TabPanelProps) {
-//   const { children, value, index, ...other } = props;
-
-//   return (
-//     <div
-//       role="tabpanel"
-//       hidden={value !== index}
-//       id={`simple-tabpanel-${index}`}
-//       aria-labelledby={`simple-tab-${index}`}
-//       {...other}
-//     >
-//       {value === index && <Box sx={{ p: {xs: 1, md: 3} }}>{children}</Box>}
-//     </div>
-//   );
-// }
 
 function a11yProps(index: number) {
   return {
@@ -47,26 +40,26 @@ const tabData = [
 
 const tabPanelData = [
   {
-    component: <OtherContent />
+    component: <BeliMobilContent />,
   },
   {
-    component: <OtherContent />
+    component: <OtherContent />,
   },
   {
-    component: <OtherContent />
+    component: <OtherContent />,
   },
   {
-    component: <OtherContent />
+    component: <OtherContent />,
   },
   {
-    component: <OtherContent />
+    component: <OtherContent />,
   },
 ];
 
 export default function TabsComponent() {
   const [value, setValue] = useState(0);
-  const theme = useTheme()
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   const handleChange = (event: SyntheticEvent, newValue: number) => {
     setValue(newValue);
@@ -84,56 +77,33 @@ export default function TabsComponent() {
               textColor="secondary"
               indicatorColor="secondary"
               sx={{ display: "flex", alignItems: "center", color: "#02A3FE" }}
-              variant={isMobile ? 'scrollable' : 'standard'}
+              variant={isMobile ? "scrollable" : "standard"}
             >
               {tabData.map((data, index) => (
                 <Tab
                   key={index}
                   label={data.label}
                   icon={data.icon}
-                  iconPosition={isMobile ? 'top' : 'start'}
+                  iconPosition={isMobile ? "top" : "start"}
                   sx={{
                     flex: "1",
                     textTransform: "capitalize",
-                    backgroundColor: value === index ? "#F5F6FA" : "inherit"
+                    backgroundColor: value === index ? "#F5F6FA" : "inherit",
                   }}
                   {...a11yProps(index)}
                 />
               ))}
             </Tabs>
           </Box>
-          <Box sx={{ width: "100%" }}>
-            {tabPanelData.map((data, index) => (
-              <TabPanel key={index} value={value} index={index}>
-                {data.component}
-                {/* <Typography variant="h2" component={"h1"}>
-                  {data.label}
-                </Typography>
-                <Box sx={{ display: "flex", alignItems: {xs: 'unset', md: 'center'}, gap: '50px', mt: '2rem', flexDirection: {xs: 'column-reverse', md: 'row'} }}>
-                  <Box sx={{flex: '1'}}>
-                    <Typography variant="h3" component={"h2"}>
-                      {data.title}
-                    </Typography>
-                    <Typography variant="subtitle1" component={"p"} sx={{mt: '1rem'}}>
-                      {data.desc}
-                    </Typography>
-                    <Button
-                      variant="contained"
-                      color="primary"
-                      sx={{ mt: "3rem", textTransform: "capitalize" }}
-                    >
-                      {data.button}
-                    </Button>
-                  </Box>
-                  <Box sx={{flex: '1'}}>
-                    <ImageItem alt={data.title} image={data.image} />
-                  </Box>
-                </Box> */}
-              </TabPanel>
-            ))}
-          </Box>
         </Box>
       </Container>
+      <Box sx={{ width: "100%" }}>
+        {tabPanelData.map((data, index) => (
+          <TabPanel key={index} value={value} index={index}>
+            {data.component}
+          </TabPanel>
+        ))}
+      </Box>
     </SectionWrapper>
   );
 }
