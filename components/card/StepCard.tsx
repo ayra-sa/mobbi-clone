@@ -49,7 +49,7 @@ export default function StepCard({ title, img, detail, index }: Props) {
       </Box>
 
       <Box sx={{ mt: 4 }}>
-        <Typography variant="h6" component={"h4"}>
+        <Typography variant="h6" component={"h4"} color={'primary'}>
           {title}
         </Typography>
         {detail && <Typography variant="body1">{detail}</Typography>}

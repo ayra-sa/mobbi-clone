@@ -25,7 +25,7 @@ export default function SelectField({ defaultValue, options }: Props) {
   return (
     <Box>
       <FormControl fullWidth sx={{ '& .MuiSelect-outlined': { border: 'none' } }}>
-        <Select defaultValue={defaultValue} variant="outlined">
+        <Select defaultValue={defaultValue} variant="standard">
           {options.map((option) => (
             <MenuItem key={option} value={option}>
               {option}

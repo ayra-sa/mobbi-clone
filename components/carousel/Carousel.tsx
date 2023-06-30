@@ -1,84 +1,67 @@
-import { Navigation, Pagination } from "swiper";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-import "swiper/css/scrollbar";
-import { Swiper, SwiperSlide } from "swiper/react";
-import RecommendationCard from "../card/RecommendationCard";
+import Slider, { Settings } from "react-slick";
 import { ReactNode } from "react";
+import { ChevronLeft, ChevronRight } from "@mui/icons-material";
+import { IconButton, styled } from "@mui/material";
 
 type Props = {
     children: ReactNode
-    // group: number
-    view: number
-    slidesPerGroup?: number
-    pagination?: any
-    loop?: boolean
+    dots?: boolean
+    slidesToShow?: number;
+  slidesToScroll?: number;
 };
 
-const cars = [
-  {
-    image: "/images/car.jpeg",
-    merk: "2018 Daihatsu New",
-    price: 12343,
-    location: "Kota Jakarta Utara",
-  },
-  {
-    image: "/images/car.jpeg",
-    merk: "2018 Daihatsu New",
-    price: 12343,
-    location: "Kota Jakarta Utara",
-  },
-  {
-    image: "/images/car.jpeg",
-    merk: "2018 Daihatsu New",
-    price: 12343,
-    location: "Kota Jakarta Utara",
-  },
-  {
-    image: "/images/car.jpeg",
-    merk: "2018 Daihatsu New",
-    price: 12343,
-    location: "Kota Jakarta Utara",
-  },
-  {
-    image: "/images/car.jpeg",
-    merk: "2018 Daihatsu New",
-    price: 12343,
-    location: "Kota Jakarta Utara",
-  },
-  {
-    image: "/images/car.jpeg",
-    merk: "2018 Daihatsu New",
-    price: 12343,
-    location: "Kota Jakarta Utara",
-  },
-  {
-    image: "/images/car.jpeg",
-    merk: "2018 Daihatsu New",
-    price: 12343,
-    location: "Kota Jakarta Utara",
-  },
-  {
-    image: "/images/car.jpeg",
-    merk: "2018 Daihatsu New",
-    price: 12343,
-    location: "Kota Jakarta Utara",
-  },
-];
+const NavButton = styled(IconButton)({
+  color: '#fff',
+  backgroundColor: 'red'
+})
 
-export default function Carousel({children, view, ...otherProps}: Props) {
+function SamplePrevArrow(props: any) {
+  const { className, style, onClick } = props;
   return (
-    <Swiper
-      slidesPerView={view}
-      // slidesPerGroup={group}
-      spaceBetween={20}
-      navigation
-      modules={[Pagination, Navigation]}
-      style={{ padding: "2rem 0" }}
-      {...otherProps}
+    <div
+      className={className}
+      style={{ ...style, display: 'block', background: 'green'}}
+      onClick={onClick}
     >
-      {children}
-    </Swiper>
+      Prev
+    </div>
+  );
+}
+
+
+export default function Carousel({children, dots = true, slidesToShow = 1, slidesToScroll = 1}: Props) {
+  const settings: Settings = {
+    dots, // Aktifkan pagination dots
+    infinite: true, // Aktifkan looping
+    speed: 500, // Kecepatan transisi slide (ms)
+    slidesToShow, // Jumlah slide yang ditampilkan secara bersamaan
+    slidesToScroll, // Jumlah slide yang akan digeser saat navigasi
+    prevArrow: <SamplePrevArrow />,
+    nextArrow: (
+      <IconButton
+        sx={{ color: '#fff', position: 'absolute', top: '50%', right: '-32px', transform: 'translateY(-50%)' }}
+      >
+        <ChevronRight />
+      </IconButton>
+    ),
+  };
+
+  return (
+    // <Swiper
+    //   slidesPerView={view}
+    //   spaceBetween={20}
+    //   navigation
+    //   modules={[Pagination, Navigation]}
+    //   style={{ padding: "2rem 0" }}
+    //   {...otherProps}
+    // >
+    //   {children}
+    // </Swiper>
+    <div className="custom-slider">
+      <Slider {...settings}>
+        {children}
+      </Slider>
+
+    </div>
   );
 }

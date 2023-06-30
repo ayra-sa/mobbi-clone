@@ -11,7 +11,7 @@ type Props = {
 
 export default function RecommendationCard({image, merk, price, location}: Props) {
   return (
-    <Card>
+    <Card sx={{margin: '0px 10px'}}>
       <CardActionArea>
         <CardMedia
           component="img"

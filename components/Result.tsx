@@ -2,7 +2,6 @@ import { Box } from "@mui/material";
 import { styled } from "@mui/system";
 import Carousel from "./carousel/Carousel";
 import ResultCard from "./card/ResultCard";
-import { SwiperSlide } from "swiper/react";
 
 type ResultProps = {
   activeButton: string | null;
@@ -53,11 +52,14 @@ export default function Result({ activeButton }: ResultProps) {
     case "Mitsubishi":
       return (
         <ResultContainer>
-          <Carousel view={5} slidesPerGroup={5} pagination={false} loop={false}>
+          <Carousel dots={false} slidesToScroll={1} slidesToShow={5}>
             {results.map((res, index) => (
-              <SwiperSlide key={index}>
-                <ResultCard title="Mitsubishi" amount={res.amount} detail={res.detail} />
-              </SwiperSlide>
+              <ResultCard
+                key={index}
+                title="Mitsubishi"
+                amount={res.amount}
+                detail={res.detail}
+              />
             ))}
           </Carousel>
         </ResultContainer>
@@ -65,11 +67,14 @@ export default function Result({ activeButton }: ResultProps) {
     case "Abc":
       return (
         <ResultContainer>
-          <Carousel view={5} slidesPerGroup={5} pagination={false} loop={false}>
+          <Carousel dots={false} slidesToScroll={1} slidesToShow={5}>
             {results.map((res, index) => (
-              <SwiperSlide key={index}>
-                <ResultCard title="Abc" amount={res.amount} detail={res.detail} />
-              </SwiperSlide>
+              <ResultCard
+                key={index}
+                title="Abc"
+                amount={res.amount}
+                detail={res.detail}
+              />
             ))}
           </Carousel>
         </ResultContainer>
@@ -77,11 +82,14 @@ export default function Result({ activeButton }: ResultProps) {
     case "Def":
       return (
         <ResultContainer>
-          <Carousel view={5} slidesPerGroup={5} pagination={false} loop={false}>
+          <Carousel dots={false} slidesToScroll={1} slidesToShow={5}>
             {results.map((res, index) => (
-              <SwiperSlide key={index}>
-                <ResultCard title="Def" amount={res.amount} detail={res.detail} />
-              </SwiperSlide>
+              <ResultCard
+                key={index}
+                title="Def"
+                amount={res.amount}
+                detail={res.detail}
+              />
             ))}
           </Carousel>
         </ResultContainer>
@@ -89,11 +97,14 @@ export default function Result({ activeButton }: ResultProps) {
     case "Drea":
       return (
         <ResultContainer>
-          <Carousel view={5} slidesPerGroup={5} pagination={false} loop={false}>
+          <Carousel dots={false} slidesToScroll={1} slidesToShow={5}>
             {results.map((res, index) => (
-              <SwiperSlide key={index}>
-                <ResultCard title="Drea" amount={res.amount} detail={res.detail} />
-              </SwiperSlide>
+              <ResultCard
+                key={index}
+                title="Drea"
+                amount={res.amount}
+                detail={res.detail}
+              />
             ))}
           </Carousel>
         </ResultContainer>
@@ -101,11 +112,14 @@ export default function Result({ activeButton }: ResultProps) {
     case "Kill":
       return (
         <ResultContainer>
-          <Carousel view={5} slidesPerGroup={5} pagination={false} loop={false}>
+          <Carousel dots={false} slidesToScroll={1} slidesToShow={5}>
             {results.map((res, index) => (
-              <SwiperSlide key={index}>
-                <ResultCard title="Kill" amount={res.amount} detail={res.detail} />
-              </SwiperSlide>
+              <ResultCard
+                key={index}
+                title="Kill"
+                amount={res.amount}
+                detail={res.detail}
+              />
             ))}
           </Carousel>
         </ResultContainer>
@@ -113,11 +127,14 @@ export default function Result({ activeButton }: ResultProps) {
     case "Reas":
       return (
         <ResultContainer>
-          <Carousel view={5} slidesPerGroup={5} pagination={false} loop={false}>
+          <Carousel dots={false} slidesToScroll={1} slidesToShow={5}>
             {results.map((res, index) => (
-              <SwiperSlide key={index}>
-                <ResultCard title="Reas" amount={res.amount} detail={res.detail} />
-              </SwiperSlide>
+              <ResultCard
+                key={index}
+                title="Reas"
+                amount={res.amount}
+                detail={res.detail}
+              />
             ))}
           </Carousel>
         </ResultContainer>
@@ -125,11 +142,14 @@ export default function Result({ activeButton }: ResultProps) {
     case "Mnb":
       return (
         <ResultContainer>
-          <Carousel view={5} slidesPerGroup={5} pagination={false} loop={false}>
+          <Carousel dots={false} slidesToScroll={1} slidesToShow={5}>
             {results.map((res, index) => (
-              <SwiperSlide key={index}>
-                <ResultCard title="Mnb" amount={res.amount} detail={res.detail} />
-              </SwiperSlide>
+              <ResultCard
+                key={index}
+                title="Mnb"
+                amount={res.amount}
+                detail={res.detail}
+              />
             ))}
           </Carousel>
         </ResultContainer>

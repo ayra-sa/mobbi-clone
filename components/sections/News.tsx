@@ -1,8 +1,18 @@
-import { Box, Button, Card, CardActionArea, CardActions, CardContent, CardMedia, Container, Grid, Link, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Card,
+  CardActionArea,
+  CardActions,
+  CardContent,
+  CardMedia,
+  Container,
+  Grid,
+  Link,
+  Typography,
+} from "@mui/material";
 import SectionWrapper from "../SectionWrapper";
 import CardItem from "../CardItem";
-import CarouselComponent from "../CarouselComponent";
-import { SwiperSlide } from "swiper/react";
 import CardNews from "../card/CardNews";
 
 type Props = {};
@@ -63,9 +73,11 @@ export default function News({}: Props) {
           <Typography variant="h6" component={"h4"}>
             Berita, Tips Review
           </Typography>
-          <Link href="#" underline="none">Lainya</Link>
+          <Link href="#" underline="none">
+            Lainya
+          </Link>
         </Box>
-        <Grid container spacing={0}>
+        {/* <Grid container spacing={0}>
           <Grid item xs>
             <CardNews />
           </Grid>
@@ -75,6 +87,22 @@ export default function News({}: Props) {
           <Grid item xs>
             <CardNews />
           </Grid>
+        </Grid>
+      </Container> */}
+        <Grid container spacing={2}>
+          <Grid item xs={12} md={8} lg={7}>
+            <CardNews />
+          </Grid>
+          <Grid item xs={12} md={4} lg={5} container direction="column">
+            <Grid item xs>
+              <CardNews />
+            </Grid>
+            <Grid item xs>
+              <CardNews />
+            </Grid>
+          </Grid>
+          {/* <Grid item xs={12} md={4} lg={3}>
+          </Grid> */}
         </Grid>
       </Container>
     </SectionWrapper>

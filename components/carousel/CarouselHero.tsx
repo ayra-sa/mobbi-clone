@@ -1,80 +1,49 @@
 import React from "react";
-import { Autoplay, Navigation, Pagination } from "swiper";
-import { Swiper, SwiperSlide } from "swiper/react";
-import ImageItem from "../ImageItem";
-
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-import "swiper/css/scrollbar";
-import { Box } from "@mui/material";
+import { Box, styled } from "@mui/material";
 import Image from "next/image";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 type Props = {};
 
+const StyledImage = styled(Image)({
+  width: '90%',
+  height: 'auto',
+  borderRadius: 30,
+})
+
+const images = [
+  {url: 'https://placeimg.com/620/280/tech'},
+  {url: 'https://placeimg.com/620/280/nature'},
+  {url: 'https://placeimg.com/620/280/people'},
+  {url: 'https://placeimg.com/620/280/tech'},
+  {url: 'https://placeimg.com/620/280/nature'},
+]
+
 export default function CarouselHero({}: Props) {
+  const settings = {
+    dots: true, // Aktifkan pagination dots
+    infinite: true, // Aktifkan looping
+    speed: 500, // Kecepatan transisi slide (ms)
+    slidesToShow: 3, // Jumlah slide yang ditampilkan secara bersamaan
+    slidesToScroll: 1, // Jumlah slide yang akan digeser saat navigasi
+  };
+
   return (
-    <Swiper
-      slidesPerView={3}
-      spaceBetween={30}
-      pagination={{
-        clickable: true,
-      }}
-      loop
-      navigation
-      autoplay
-      modules={[Pagination, Navigation, Autoplay]}
-    >
-      <SwiperSlide>
-        <Box>
-          <Image
+    <Slider {...settings}>
+      {images.map((image, index) => (
+        <Box key={index}>
+          <StyledImage
             alt="image"
-            src="https://placeimg.com/620/280/tech"
-            width={400}
-            height={200}
+            src={image.url}
+            width={0}
+            height={0}
+            sizes="100vw"
+            loading="lazy"
           />
         </Box>
-      </SwiperSlide>
-      <SwiperSlide>
-        <Box>
-          <Image
-            alt="image"
-            src="https://placeimg.com/620/280/people"
-            width={400}
-            height={200}
-          />
-        </Box>
-      </SwiperSlide>
-      <SwiperSlide>
-        <Box>
-          <Image
-            alt="image"
-            src="https://placeimg.com/620/280/nature"
-            width={400}
-            height={200}
-          />
-        </Box>
-      </SwiperSlide>
-      <SwiperSlide>
-        <Box>
-          <Image
-            alt="image"
-            src="https://placeimg.com/620/280/tech"
-            width={400}
-            height={200}
-          />
-        </Box>
-      </SwiperSlide>
-      <SwiperSlide>
-        <Box>
-          <Image
-            alt="image"
-            src="https://placeimg.com/620/280/animal"
-            width={400}
-            height={200}
-          />
-        </Box>
-      </SwiperSlide>
-    </Swiper>
+      ))}
+    </Slider>
   );
 }

@@ -1,7 +1,4 @@
 import {Box, Container, Toolbar} from '@mui/material'
-import CarouselComponent from '../CarouselComponent'
-import { SwiperSlide } from 'swiper/react';
-import CardHeroItem from '../CardHeroItem';
 import SectionWrapper from '../SectionWrapper';
 import CarouselHero from '../carousel/CarouselHero';
 
@@ -56,8 +53,8 @@ export default function Hero({}: Props) {
               ))}
             </CarouselComponent>
         </Box> */}
-      </Container>
         <CarouselHero />
+      </Container>
     </Box>
   )
 }

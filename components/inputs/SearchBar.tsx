@@ -27,6 +27,7 @@ export default function SearchBar({}: Props) {
     position: "relative",
     borderRadius: "50px",
     backgroundColor: "#FFF",
+    paddingRight: '1rem',
     // "&:hover": {
     //   backgroundColor: alpha(theme.palette.common.white, 0.25),
     // },
