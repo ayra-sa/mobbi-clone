@@ -34,7 +34,7 @@ export default function Guides({}: Props) {
         <Container>
           <Heading3>Panduan Transaksi</Heading3>
 
-          <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+          <Box sx={{ display: "flex", alignItems: "flex-start", mt: '2rem' }}>
             {guides.map((guide, index) => (
               <StepCard
                 key={index}

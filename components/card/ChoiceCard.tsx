@@ -2,7 +2,7 @@ import { styled } from "@mui/material";
 import { ReactNode } from "react";
 
 type Props = {
-    children: ReactNode
+  children: ReactNode;
 };
 
 const StyledBox = styled("div")({
@@ -12,8 +12,6 @@ const StyledBox = styled("div")({
   },
 });
 
-export default function ChoiceCard({children}: Props) {
-  return <StyledBox>
-    {children}
-  </StyledBox>
+export default function ChoiceCard({ children }: Props) {
+  return <StyledBox>{children}</StyledBox>;
 }

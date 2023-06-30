@@ -11,7 +11,7 @@ type Props = {
 
 export default function RecommendationCard({image, merk, price, location}: Props) {
   return (
-    <Card sx={{margin: '0px 10px'}}>
+    <Card sx={{margin: '18px 10px'}}>
       <CardActionArea>
         <CardMedia
           component="img"
@@ -20,11 +20,11 @@ export default function RecommendationCard({image, merk, price, location}: Props
           alt={merk}
         />
         <CardContent>
-          <Typography variant="h6" component={"p"}>
+          <Typography variant="h6" component={"p"} color={'bgNav'}>
             {merk}
           </Typography>
-          <Typography variant='h6' component={'p'}>Rp {price}</Typography>
-          <Typography variant='subtitle2' component={'div'}>
+          <Typography variant='h6' component={'p'} color={'primary'}>Rp {price}</Typography>
+          <Typography variant='subtitle2' component={'div'} sx={{display: 'flex', alignItems: 'center', gap: '8px'}}>
             <LocationCity />
             {location}
           </Typography>

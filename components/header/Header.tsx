@@ -18,7 +18,7 @@ import { useState } from "react";
 import DropdownMenu from "./DropdownMenu";
 import NavMobile from "./NavMobile";
 import SearchBar from "../inputs/SearchBar";
-
+import { ButtonPrimary } from "../button/ButtonRounded";
 
 const navItems = [
   {
@@ -45,7 +45,7 @@ export default function Header() {
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
-      <AppBar component="nav" sx={{bgcolor: '#17376D'}}>
+      <AppBar component="nav" sx={{ bgcolor: "#17376D" }}>
         <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
           <IconButton
             // color="inherit"
@@ -75,13 +75,22 @@ export default function Header() {
             sx={{ display: { xs: "none", sm: "flex" } }}
           >
             {navItems.map((navItem, index) => (
-              <DropdownMenu key={index} menuLabel={navItem.menu} menuItems={navItem.dropdownMenu} />
+              <DropdownMenu
+                key={index}
+                menuLabel={navItem.menu}
+                menuItems={navItem.dropdownMenu}
+              />
             ))}
-            <Button startIcon={<Person />} variant="contained">Masuk/Daftar</Button>
+            <ButtonPrimary startIcon={<Person />}>
+              Masuk/Daftar
+            </ButtonPrimary>
           </Stack>
         </Toolbar>
       </AppBar>
-      <NavMobile handleDrawerToggle={handleDrawerToggle} mobileOpen={mobileOpen}  />
+      <NavMobile
+        handleDrawerToggle={handleDrawerToggle}
+        mobileOpen={mobileOpen}
+      />
     </Box>
   );
 }

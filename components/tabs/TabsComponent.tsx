@@ -1,16 +1,13 @@
 import {
   Tabs,
   Tab,
-  Typography,
   Box,
   Container,
-  Button,
   useMediaQuery,
   useTheme,
 } from "@mui/material";
 import { ReactNode, SyntheticEvent, useState } from "react";
 import SectionWrapper from "../SectionWrapper";
-import ImageItem from "../ImageItem";
 import {
   CarRental,
   Garage,
@@ -19,7 +16,6 @@ import {
   TwoWheeler,
 } from "@mui/icons-material";
 import TabPanel from "./TabPanel";
-import RangeSliderInput from "../inputs/RangeSliderInput";
 import BeliMobilContent from "./BeliMobilContent";
 import OtherContent from "./OtherContent";
 
@@ -74,9 +70,7 @@ export default function TabsComponent() {
               value={value}
               onChange={handleChange}
               aria-label="tab"
-              textColor="secondary"
-              indicatorColor="secondary"
-              sx={{ display: "flex", alignItems: "center", color: "#02A3FE" }}
+              sx={{ display: "flex", alignItems: "center" }}
               variant={isMobile ? "scrollable" : "standard"}
             >
               {tabData.map((data, index) => (
@@ -89,6 +83,7 @@ export default function TabsComponent() {
                     flex: "1",
                     textTransform: "capitalize",
                     backgroundColor: value === index ? "#F5F6FA" : "inherit",
+                    color: 'textTab'
                   }}
                   {...a11yProps(index)}
                 />

@@ -22,6 +22,11 @@ const brands = [
     backgroundColor: '#ffb401'
   });
 
+  const PaperBox = styled(Paper)({
+    borderRadius: '20px',
+    overflow: 'hidden'
+  })
+
 export default function ByBrand({}: Props) {
     const [activeButton, setActiveButton] = useState<string | null>(
         brands[0].brand
@@ -33,12 +38,14 @@ export default function ByBrand({}: Props) {
   return (
     <BoxContainer>
         <Container>
-          <Paper>
-            <Heading3>Cari Berdasarkan Merek</Heading3>
-            <Typography variant="body1" sx={{ mt: 2 }}>
-              Mobil impianmu sudah menunggu. Temukan diantara beragam pilihan
-              merek yang kami tawarkan.
-            </Typography>
+          <PaperBox>
+            <Box sx={{p: '2rem'}}>
+              <Heading3>Cari Berdasarkan Merek</Heading3>
+              <Typography variant="body1" sx={{ mt: 2 }}>
+                Mobil impianmu sudah menunggu. Temukan diantara beragam pilihan
+                merek yang kami tawarkan.
+              </Typography>
+            </Box>
 
             <Box sx={{padding: "2rem 1rem"}}>
               <Carousel dots={false} slidesToScroll={1} slidesToShow={5}>
@@ -54,7 +61,7 @@ export default function ByBrand({}: Props) {
             </Box>
 
             <Result activeButton={activeButton} />
-          </Paper>
+          </PaperBox>
         </Container>
       </BoxContainer>
   )

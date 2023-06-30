@@ -1,65 +1,89 @@
-import React, { ChangeEvent, FC, useState } from "react";
-import { Box, Slider, TextField, TextFieldProps } from "@mui/material";
+import React from "react";
+import { Box, Slider, TextField } from "@mui/material";
 
-type Props = {
-    defaultValue: [number, number]
-    min: number
-    max: number
-    inputMax: number
-    // onRangeChange: (value: [number, number]) => void;
-    textFieldProps?: TextFieldProps
+interface RangeSliderProps {
+  value: [number | "", number | ""];
+  onChange: any;
+  // onChange: (newValue: [number | '', number | '']) => void;
+  min?: number;
+  max?: number;
+  step?: number;
 }
 
-export default function RangeSliderInput({defaultValue, min, max, textFieldProps, inputMax}: Props) {
-  const [rangeValue, setRangeValue] = useState<[number, number]>(defaultValue);
-
-  const handleRangeChange = (event: Event, newValue: number | number[]) => {
+const RangeSliderInput: React.FC<RangeSliderProps> = ({
+  value,
+  onChange,
+  min = 0,
+  max = 100,
+  step = 1,
+}) => {
+  const handleSliderChange = (event: Event, newValue: number | number[]) => {
     if (Array.isArray(newValue)) {
-      setRangeValue(newValue as [number, number]);
-    //   onRangeChange(newValue as [number, number]);
+      onChange([newValue[0], newValue[1]]);
     }
   };
 
-  console.log(rangeValue)
+  const handleInputChange =
+    (index: number) => (event: React.ChangeEvent<HTMLInputElement>) => {
+      const newValue =
+        event.target.value === "" ? "" : Number(event.target.value);
+      const updatedValue: any = [...value];
+      updatedValue[index] = newValue;
+      onChange(updatedValue);
+    };
+
+  const handleBlur = (index: number) => () => {
+    const updatedValue: any = [...value];
+    if (updatedValue[index] === "") {
+      updatedValue[index] = "";
+    } else if (updatedValue[index] < min) {
+      updatedValue[index] = min;
+    } else if (updatedValue[index] > max) {
+      updatedValue[index] = max;
+    }
+    onChange(updatedValue);
+  };
 
   return (
-    <div>
+    <Box sx={{ width: 250 }}>
       <Slider
-        value={rangeValue}
-        onChange={handleRangeChange}
-        min={rangeValue[0]}
-        max={rangeValue[1]}
-        step={1}
-        valueLabelDisplay="auto"
+        value={value.map((val) => (val === "" ? 0 : val))}
+        onChange={handleSliderChange}
+        min={min}
+        max={max}
+        // step={step}
+        aria-labelledby="range-slider"
       />
-
-      <Box display="flex" justifyContent="space-between">
+      <Box sx={{display: 'flex', justifyContent: 'space-between'}}>
         <TextField
-          label="Min"
-          type="number"
-          value={rangeValue[0]}
-          onChange={(event) =>
-            setRangeValue([Number(event.target.value), rangeValue[1]])
-          }
+          value={value[0]}
+          size="small"
+          onChange={handleInputChange(0)}
+          onBlur={handleBlur(0)}
           inputProps={{
-            min: rangeValue[0].toString()
+            step,
+            min,
+            max,
+            type: "number",
+            "aria-labelledby": "range-slider",
           }}
-          {...textFieldProps}
         />
         <TextField
-          label="Max"
-          type="number"
-          value={rangeValue[1]}
-          onChange={(event) =>
-            setRangeValue([rangeValue[0], Number(event.target.value)])
-          }
+          value={value[1]}
+          size="small"
+          onChange={handleInputChange(1)}
+          onBlur={handleBlur(1)}
           inputProps={{
-            max: rangeValue[1].toString()
+            step,
+            min,
+            max,
+            type: "number",
+            "aria-labelledby": "range-slider",
           }}
-          {...textFieldProps}
         />
       </Box>
-    </div>
+    </Box>
   );
 };
 
+export default RangeSliderInput;

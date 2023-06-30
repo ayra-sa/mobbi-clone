@@ -1,23 +1,64 @@
-import { Box, Button, Typography } from '@mui/material'
-import React from 'react'
+import { Box, Button, Container, Grid, Typography } from "@mui/material";
+import { styled } from "@mui/system";
+import React from "react";
+import OtherCard from "../card/OtherCard";
+import { ButtonSecondary } from "../button/ButtonRounded";
 
-type Props = {}
+type Props = {};
+
+const BoxContainer = styled(Box)({
+  padding: "2rem",
+});
+
+const ButtonContainer = styled("div")({
+  display: "flex",
+  justifyContent: "center",
+  marginTop: "2rem",
+  width: "30%",
+});
+
+const data = [
+  {
+    title: "Jual lebih mudah",
+    list: ["Proses pembayaran cepat", "Transaksi cepat"],
+  },
+  {
+    title: "Jual lebih mudah",
+    list: ["Proses pembayaran cepat", "Transaksi cepat"],
+  },
+  {
+    title: "Jual lebih mudah",
+    list: ["Proses pembayaran cepat", "Transaksi cepat"],
+  },
+];
 
 export default function OtherContent({}: Props) {
   return (
-    <Box>
-        <Typography variant='h5' component={'h4'}>Kenapa Harus di mobbi?</Typography>
-        <Box sx={{display: 'flex', alignItems: 'center'}}>
-            <Box sx={{width: '30%'}} component={'figure'}>IMAGE</Box>
-            <Box sx={{width: '70%'}}>
-                <Typography variant='h6' component={'h5'}>Jual lebih mudah</Typography>
-                
-                <Typography variant='body1' component={'p'}>Ada harga jual online</Typography>
-                <Typography variant='body1' component={'p'}>Transparan, kapanpun dimanapun</Typography>
-            </Box>
-        </Box>
+    <BoxContainer>
+      <Container>
+        <Typography variant="h5" component={"h4"} color={"bgNav"}>
+          Kenapa Harus di mobbi?
+        </Typography>
+        <Grid container spacing={2} sx={{ mt: 4 }}>
+          {data.map((data, index) => (
+            <Grid item xs key={index}>
+              <OtherCard title={data.title} list={data.list} />
+            </Grid>
+          ))}
+        </Grid>
 
-        <Button variant='contained' color='secondary'>Jual Sekarang</Button>
-    </Box>
-  )
+        <ButtonSecondary
+          size="large"
+          sx={{
+            width: "30%",
+            display: "block",
+            marginInline: "auto",
+            mt: "2.5rem",
+          }}
+        >
+          Jual Sekarang
+        </ButtonSecondary>
+      </Container>
+    </BoxContainer>
+  );
 }

@@ -8,7 +8,7 @@ type ResultProps = {
 };
 
 const ResultContainer = styled(Box)(({ theme }) => ({
-  backgroundColor: "gray",
+  backgroundColor: "#f5f6fa",
   padding: "2rem 1rem",
 }));
 

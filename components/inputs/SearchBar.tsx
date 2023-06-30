@@ -62,9 +62,6 @@ export default function SearchBar({}: Props) {
       width: "100%",
       [theme.breakpoints.up("sm")]: {
         width: "20ch",
-        // "&:focus": {
-        //   width: "20ch",
-        // },
       },
     },
   }));

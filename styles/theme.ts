@@ -7,6 +7,7 @@ declare module "@mui/material/styles" {
     footerText?: string;
     footerHeading?: string;
     bgNav?: string
+    textTab?: string
   }
 }
 
@@ -31,12 +32,14 @@ const theme = createTheme({
       main: red.A400,
     },
     text: {
-      primary: "#BDC5D3",
+      primary: "#445a7a",
       secondary: "#17376D",
     },
     background: {
       default: "#fff",
     },
+    // primary: "#BDC5D3",
+    textTab: '#BDC5D3',
     bgNav: "#17376D",
     footerHeading: "#FBB552",
     footerText: "#E3EADB",

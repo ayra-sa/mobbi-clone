@@ -8,6 +8,18 @@
     -o-border-radius: 20px; */
 }
 
+.customArrow {
+  width: 50px !important;
+  height: 50px !important;
+  background-color: red;
+  border-radius: 100px;
+  border: 1px solid blue;
+  -webkit-border-radius: 100px;
+  -moz-border-radius: 100px;
+  -ms-border-radius: 100px;
+  -o-border-radius: 100px;
+}
+
 @media (min-width: 1024px) {
   .customImage {
     width: auto;

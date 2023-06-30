@@ -1,71 +1,72 @@
-import { Box, Container, Divider, styled } from '@mui/material'
-import React from 'react'
-import { Heading3 } from '../typography/Text'
-import Carousel from '../carousel/Carousel'
-import RecommendationCard from '../card/RecommendationCard'
+import { Box, Container, Divider, styled } from "@mui/material";
+import React from "react";
+import { Heading3 } from "../typography/Text";
+import Carousel from "../carousel/Carousel";
+import RecommendationCard from "../card/RecommendationCard";
 
-type Props = {}
+type Props = {};
 
 const cars = [
-    {
-      image: "/images/car.jpeg",
-      merk: "2018 Daihatsu New",
-      price: 12343,
-      location: "Kota Jakarta Utara",
-    },
-    {
-      image: "/images/car.jpeg",
-      merk: "2018 Daihatsu New",
-      price: 12343,
-      location: "Kota Jakarta Utara",
-    },
-    {
-      image: "/images/car.jpeg",
-      merk: "2018 Daihatsu New",
-      price: 12343,
-      location: "Kota Jakarta Utara",
-    },
-    {
-      image: "/images/car.jpeg",
-      merk: "2018 Daihatsu New",
-      price: 12343,
-      location: "Kota Jakarta Utara",
-    },
-    {
-      image: "/images/car.jpeg",
-      merk: "2018 Daihatsu New",
-      price: 12343,
-      location: "Kota Jakarta Utara",
-    },
-    {
-      image: "/images/car.jpeg",
-      merk: "2018 Daihatsu New",
-      price: 12343,
-      location: "Kota Jakarta Utara",
-    },
-    {
-      image: "/images/car.jpeg",
-      merk: "2018 Daihatsu New",
-      price: 12343,
-      location: "Kota Jakarta Utara",
-    },
-    {
-      image: "/images/car.jpeg",
-      merk: "2018 Daihatsu New",
-      price: 12343,
-      location: "Kota Jakarta Utara",
-    },
-  ];
+  {
+    image: "/images/car.jpeg",
+    merk: "2018 Daihatsu New",
+    price: 12343,
+    location: "Kota Jakarta Utara",
+  },
+  {
+    image: "/images/car.jpeg",
+    merk: "2018 Daihatsu New",
+    price: 12343,
+    location: "Kota Jakarta Utara",
+  },
+  {
+    image: "/images/car.jpeg",
+    merk: "2018 Daihatsu New",
+    price: 12343,
+    location: "Kota Jakarta Utara",
+  },
+  {
+    image: "/images/car.jpeg",
+    merk: "2018 Daihatsu New",
+    price: 12343,
+    location: "Kota Jakarta Utara",
+  },
+  {
+    image: "/images/car.jpeg",
+    merk: "2018 Daihatsu New",
+    price: 12343,
+    location: "Kota Jakarta Utara",
+  },
+  {
+    image: "/images/car.jpeg",
+    merk: "2018 Daihatsu New",
+    price: 12343,
+    location: "Kota Jakarta Utara",
+  },
+  {
+    image: "/images/car.jpeg",
+    merk: "2018 Daihatsu New",
+    price: 12343,
+    location: "Kota Jakarta Utara",
+  },
+  {
+    image: "/images/car.jpeg",
+    merk: "2018 Daihatsu New",
+    price: 12343,
+    location: "Kota Jakarta Utara",
+  },
+];
 
-  const BoxContainer = styled(Box)({
-    padding: "2rem 0"
-  });
+const BoxContainer = styled(Box)({
+  padding: "2rem 0",
+});
 
 export default function Rekomendasi({}: Props) {
   return (
     <BoxContainer>
-        <Container>
-          <Heading3>Rekomendasi Mobil</Heading3>
+      <Container>
+        <Heading3>Rekomendasi Mobil</Heading3>
+        <Box sx={{mt: 4, mb: 6}}>
           <Carousel dots slidesToShow={4} slidesToScroll={4}>
             {cars.map((car, index) => (
               <RecommendationCard
@@ -77,8 +78,9 @@ export default function Rekomendasi({}: Props) {
               />
             ))}
           </Carousel>
-          <Divider />
-        </Container>
-      </BoxContainer>
-  )
+        </Box>
+        <Divider />
+      </Container>
+    </BoxContainer>
+  );
 }

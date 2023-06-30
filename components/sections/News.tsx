@@ -1,11 +1,5 @@
 import {
   Box,
-  Button,
-  Card,
-  CardActionArea,
-  CardActions,
-  CardContent,
-  CardMedia,
   Container,
   Grid,
   Link,
@@ -69,7 +63,7 @@ export default function News({}: Props) {
   return (
     <SectionWrapper bgColor="#EBF4F3">
       <Container>
-        <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+        <Box sx={{ display: "flex", justifyContent: "space-between", mb: '2rem' }}>
           <Typography variant="h6" component={"h4"}>
             Berita, Tips Review
           </Typography>
@@ -77,23 +71,11 @@ export default function News({}: Props) {
             Lainya
           </Link>
         </Box>
-        {/* <Grid container spacing={0}>
-          <Grid item xs>
-            <CardNews />
-          </Grid>
-          <Grid item xs>
-            <CardNews />
-          </Grid>
-          <Grid item xs>
-            <CardNews />
-          </Grid>
-        </Grid>
-      </Container> */}
         <Grid container spacing={2}>
           <Grid item xs={12} md={8} lg={7}>
             <CardNews />
           </Grid>
-          <Grid item xs={12} md={4} lg={5} container direction="column">
+          <Grid item xs={12} md={4} lg={5} container spacing={2} direction="column">
             <Grid item xs>
               <CardNews />
             </Grid>
@@ -101,8 +83,6 @@ export default function News({}: Props) {
               <CardNews />
             </Grid>
           </Grid>
-          {/* <Grid item xs={12} md={4} lg={3}>
-          </Grid> */}
         </Grid>
       </Container>
     </SectionWrapper>
