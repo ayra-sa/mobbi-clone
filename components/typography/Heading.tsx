@@ -10,5 +10,5 @@ const StyledHeading = styled(Typography)(({theme}) => ({
 }))
 
 export const Heading3 = ({children}: Props) => {
-    return <StyledHeading variant="h3" component='h2'>{children}</StyledHeading> 
+    return <StyledHeading variant="h3" as='h2'>{children}</StyledHeading> 
 }

@@ -10,7 +10,8 @@ import RangeSliderInput from "./RangeSliderInput";
 
 type Props = {
   value: string | number;
-  onChange: (value: string | number) => void;
+  // onChange: (value: string | number) => void;
+  onChange: any;
   options: { value: string | number; label: string }[];
   defaultValue?: string | number
   // handleChange: (event: ChangeEvent<HTMLInputElement>) => void;
@@ -19,7 +20,7 @@ type Props = {
 };
 
 export default function SelectItem({ value, onChange, options, defaultValue }: Props) {
-  const handleChange = (event: ChangeEvent<{ value: unknown }>) => {
+  const handleChange = (event: any) => {
     const selectedValue = event.target.value as string | number;
     onChange(selectedValue);
   };
