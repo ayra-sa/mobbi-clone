@@ -11,12 +11,16 @@ type Props = {
 };
 
 const ImageContainer = styled('figure')(({theme}) => ({
-  width: 180,
-  height: 180,
+  width: 80,
+  height: 80,
   borderRadius: 100,
   padding: 6,
   border: `2px solid ${theme.palette.primary.main}`,
-  overflow: 'hidden'
+  overflow: 'hidden',
+  [theme.breakpoints.up("md")]: {
+    width: 180,
+    height: 180,
+  }
 }));
 
 const TheImage = styled(Image)({
@@ -26,16 +30,23 @@ const TheImage = styled(Image)({
 })
 
 const NumberContainer = styled("div")(({ theme }) => ({
-  width: 35,
-  height: 35,
+  width: 18,
+  height: 18,
+  fontSize: '.7rem',
   display: 'flex',
   placeContent: 'center',
   alignItems: 'center',
+  justifyContent: 'center',
   color: '#fff',
   borderRadius: 100,
   backgroundColor: theme.palette.primary.main,
   position: "absolute",
   inset: "0 auto auto 0",
+  [theme.breakpoints.up("md")]: {
+    width: 30,
+    height: 30,
+    fontSize: '1rem',
+  }
 }));
 
 export default function StepCard({ title, img, detail, index }: Props) {
@@ -48,7 +59,7 @@ export default function StepCard({ title, img, detail, index }: Props) {
         </ImageContainer>
       </Box>
 
-      <Box sx={{ mt: 4 }}>
+      <Box sx={{ mt: {xs: 2, md: 4} }}>
         <Typography variant="h6" component={"h4"} color={'primary'}>
           {title}
         </Typography>

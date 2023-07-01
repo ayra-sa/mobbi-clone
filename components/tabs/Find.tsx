@@ -2,21 +2,24 @@ import {
   Box,
   Container,
   Divider,
-  Grid,
   IconButton,
   InputBase,
   Paper,
   SelectChangeEvent,
-  Stack,
-  TextField,
   Typography,
+  alpha,
   styled,
 } from "@mui/material";
 import React, { ChangeEvent, useState } from "react";
 import SelectMultipleItem from "../inputs/SelectMultipleItem";
-import { ArrowRight, Handshake, Search } from "@mui/icons-material";
-import { Heading3, Heading4 } from "../typography/Text";
+import {
+  ArrowRightRounded,
+  Handshake,
+  Search,
+} from "@mui/icons-material";
+import { Heading4 } from "../typography/Text";
 import RangeSliderInput from "../inputs/RangeSliderInput";
+import RangeInput from "../inputs/RangeInput";
 
 type Props = {};
 
@@ -41,45 +44,83 @@ const StyledPaper = styled(Paper)(({ theme }) => ({
   color: theme.palette.common.white,
 }));
 
+const SearchButton = styled(IconButton)(({ theme }) => ({
+  backgroundColor: theme.palette.primary.main,
+  color: theme.palette.common.white,
+  width: "100%",
+  borderRadius: "20px",
+  "&:hover": {
+    backgroundColor: alpha(theme.palette.primary.main, 0.5),
+  },
+  [theme.breakpoints.up("md")]: {
+    width: "8%",
+  }
+}));
+
 const ArrowButton = styled(IconButton)(({ theme }) => ({
   backgroundColor: theme.palette.secondary.main,
   color: "#fff",
-  width: 30,
-  height: 30,
+  width: 25,
+  height: 25,
 }));
 
 const SearchContainer = styled("div")(({ theme }) => ({
   display: "flex",
-  border: `1px solid ${theme.palette.text.primary}`,
-  borderRadius: "40px",
-  width: "80%",
+  flexDirection: 'column',
+  rowGap: '10px',
+  width: "100%",
+  [theme.breakpoints.up("md")]: {
+    width: "90%",
+    paddingInline: '1rem',
+    border: `1px solid ${theme.palette.text.primary}`,
+    borderRadius: "40px",
+    flexDirection: 'row'
+  },
 }));
+
+const SearchInputWrap = styled("div")(({theme}) => ({
+  width: '100%',
+  height: '100%',
+  overflow: 'hidden',
+  border: '1px solid red',
+  [theme.breakpoints.up("md")]: {
+    width: '30%',
+  }
+}))
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
   color: "inherit",
+  width: '100%',
+  height: '100%',
   "& .MuiInputBase-input": {
-    padding: theme.spacing(1, 2),
-    borderRight: `1px solid ${theme.palette.text.primary}`,
-    // vertical padding + font size from searchIcon
-    // paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-    transition: theme.transitions.create("width"),
-    width: "100%",
-    // [theme.breakpoints.up("sm")]: {
-    //   width: "20ch",
-    // },
+    height: '100%',
+    padding: theme.spacing(2),
+    [theme.breakpoints.up("md")]: {
+      borderRight: `1px solid ${theme.palette.text.primary}`,
+    }
   },
+  "&::placeholder": {
+    color: 'inherit',
+    fontSize: '.8rem'
+  }
 }));
 
 export default function Find({}: Props) {
   const [keyword, setKeyword] = useState("");
   const [optionValue, setOptionValue] = useState<string[]>([]);
-  const [value, setValue] = React.useState<[number, number]>([30, 70]);
+  const [valueOne, setValueOne] = useState<[number, number]>([30, 70]);
+  const [valueTwo, setValueTwo] = useState<[number, number]>([2002, 2020]);
 
-  const handleChangeRange = (newValue: [number, number]) => {
-    setValue(newValue);
+  const handleChangeRangeValueOne = (newValue: [number, number]) => {
+    setValueOne(newValue);
   };
 
-  const formattedRangeValue = value.join(' - ');
+  const handleChangeRangeValueTwo = (newValue: [number, number]) => {
+    setValueTwo(newValue);
+  };
+
+  const formattedRangeValueOne = valueOne.join(" - ");
+  const formattedRangeValueTwo = valueTwo.join(" - ");
 
   const handleChangeSelect = (event: SelectChangeEvent<typeof optionValue>) => {
     const {
@@ -97,28 +138,39 @@ export default function Find({}: Props) {
       <Container>
         <Heading4>Temukan mobil impian</Heading4>
 
-        <TextField
-          value={formattedRangeValue}
-          label="Range Value"
-          variant="outlined"
-          disabled
-        />
-
-        <RangeSliderInput
-          value={value}
-          onChange={handleChangeRange}
-          min={0}
-          max={100}
-          step={10}
-        />
-        <Box sx={{ display: "flex", gap: "10px" }}>
+        <Box sx={{ display: "flex", gap: "10px", my: '1rem', flexDirection: {xs: 'column', md: 'row'} }}>
           <SearchContainer>
-            <StyledInputBase
-              placeholder="Search..."
-              value={keyword}
-              onChange={handleChange}
-              //   onKeyPress={handleKeyPress}
-            />
+            <SearchInputWrap>
+              <StyledInputBase
+                placeholder="Search..."
+                value={keyword}
+                onChange={handleChange}
+                sx={{
+                  '& .MuiInputBase-input': {
+                    color: 'inherit',
+                    fontSize: '.8rem'
+                  },
+                }}
+              />
+            </SearchInputWrap>
+            <RangeInput value={formattedRangeValueOne}>
+              <RangeSliderInput
+                value={valueOne}
+                onChange={handleChangeRangeValueOne}
+                min={0}
+                max={100}
+                step={10}
+              />
+            </RangeInput>
+            <RangeInput value={formattedRangeValueTwo}>
+              <RangeSliderInput
+                value={valueTwo}
+                onChange={handleChangeRangeValueTwo}
+                min={2000}
+                max={2023}
+                step={10}
+              />
+            </RangeInput>
             <SelectMultipleItem
               options={options}
               value={optionValue}
@@ -127,20 +179,20 @@ export default function Find({}: Props) {
             />
           </SearchContainer>
 
-          <IconButton size="medium" sx={{ bgcolor: "red", color: "white" }}>
-            <Search />
-          </IconButton>
+          <SearchButton size="medium">
+            <Search sx={{fontSize: 40}} />
+          </SearchButton>
         </Box>
 
         <StyledPaper>
-          <Box sx={{ display: "flex", gap: "10px" }}>
+          <Box sx={{ display: "flex", gap: "10px", alignItems: 'center' }}>
             <Handshake />
             <Typography variant="body1" component={"p"}>
               Belum tahu mobil impianmu? Coba fitur rekomendasi kami!
             </Typography>
           </Box>
           <ArrowButton>
-            <ArrowRight />
+            <ArrowRightRounded />
           </ArrowButton>
         </StyledPaper>
         <Divider />

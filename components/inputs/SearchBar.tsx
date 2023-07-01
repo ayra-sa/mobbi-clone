@@ -28,9 +28,6 @@ export default function SearchBar({}: Props) {
     borderRadius: "50px",
     backgroundColor: "#FFF",
     paddingRight: '1rem',
-    // "&:hover": {
-    //   backgroundColor: alpha(theme.palette.common.white, 0.25),
-    // },
     marginLeft: 0,
     width: "100%",
     display: 'flex',
@@ -56,7 +53,7 @@ export default function SearchBar({}: Props) {
     color: "inherit",
     "& .MuiInputBase-input": {
       padding: theme.spacing(1, 1, 1, 0),
-      // vertical padding + font size from searchIcon
+      borderRight: `1px solid ${theme.palette.text.primary}`,
       paddingLeft: `calc(1em + ${theme.spacing(4)})`,
       transition: theme.transitions.create("width"),
       width: "100%",
@@ -76,7 +73,6 @@ export default function SearchBar({}: Props) {
         inputProps={{ "aria-label": "search" }}
       />
       <SelectField defaultValue={'Certified'} options={options} />
-      {/* <SelectItem value={optionValue} onChange={handleChange} options={options} /> */}
     </Search>
   );
 }

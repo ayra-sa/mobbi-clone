@@ -10,6 +10,7 @@ type Props = {
   dots?: boolean;
   slidesToShow?: number;
   slidesToScroll?: number;
+  responsive?: any
 };
 
 const NavButton = styled(IconButton)({
@@ -38,6 +39,7 @@ export default function Carousel({
   dots = true,
   slidesToShow = 1,
   slidesToScroll = 1,
+  responsive
 }: Props) {
   const settings: Settings = {
     dots, // Aktifkan pagination dots
@@ -46,20 +48,38 @@ export default function Carousel({
     slidesToShow, // Jumlah slide yang ditampilkan secara bersamaan
     slidesToScroll, // Jumlah slide yang akan digeser saat navigasi
     prevArrow: <CustomPrev />,
-    nextArrow: <CustomNext />
+    nextArrow: <CustomNext />,
+    initialSlide: 0,
+    responsive
+    // responsive: [
+    //   {
+    //     breakpoint: 1024,
+    //     settings: {
+    //       slidesToShow: 3,
+    //       slidesToScroll: 1,
+    //       infinite: true,
+    //       dots: true,
+    //     },
+    //   },
+    //   {
+    //     breakpoint: 600,
+    //     settings: {
+    //       slidesToShow: 2,
+    //       slidesToScroll: 1,
+    //       initialSlide: 2,
+    //     },
+    //   },
+    //   {
+    //     breakpoint: 480,
+    //     settings: {
+    //       slidesToShow: 1,
+    //       slidesToScroll: 1
+    //     },
+    //   },
+    // ],
   };
 
   return (
-    // <Swiper
-    //   slidesPerView={view}
-    //   spaceBetween={20}
-    //   navigation
-    //   modules={[Pagination, Navigation]}
-    //   style={{ padding: "2rem 0" }}
-    //   {...otherProps}
-    // >
-    //   {children}
-    // </Swiper>
     <div className="custom-slider">
       <Slider {...settings}>{children}</Slider>
     </div>

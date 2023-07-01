@@ -48,11 +48,38 @@ const results = [
 ];
 
 export default function Result({ activeButton }: ResultProps) {
+  const responsive = [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 5,
+        slidesToScroll: 1,
+        infinite: true,
+        dots: true,
+      },
+    },
+    // {
+    //   breakpoint: 600,
+    //   settings: {
+    //     slidesToShow: 2,
+    //     slidesToScroll: 1,
+    //     initialSlide: 2,
+    //   },
+    // },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 1
+      },
+    },
+  ]
+
   switch (activeButton) {
     case "Mitsubishi":
       return (
         <ResultContainer>
-          <Carousel dots={false} slidesToScroll={1} slidesToShow={5}>
+          <Carousel dots={false} slidesToScroll={1} slidesToShow={5} responsive={responsive}>
             {results.map((res, index) => (
               <ResultCard
                 key={index}
@@ -67,7 +94,7 @@ export default function Result({ activeButton }: ResultProps) {
     case "Abc":
       return (
         <ResultContainer>
-          <Carousel dots={false} slidesToScroll={1} slidesToShow={5}>
+          <Carousel dots={false} slidesToScroll={1} slidesToShow={5} responsive={responsive}>
             {results.map((res, index) => (
               <ResultCard
                 key={index}
@@ -82,7 +109,7 @@ export default function Result({ activeButton }: ResultProps) {
     case "Def":
       return (
         <ResultContainer>
-          <Carousel dots={false} slidesToScroll={1} slidesToShow={5}>
+          <Carousel dots={false} slidesToScroll={1} slidesToShow={5} responsive={responsive}>
             {results.map((res, index) => (
               <ResultCard
                 key={index}
@@ -97,7 +124,7 @@ export default function Result({ activeButton }: ResultProps) {
     case "Drea":
       return (
         <ResultContainer>
-          <Carousel dots={false} slidesToScroll={1} slidesToShow={5}>
+          <Carousel dots={false} slidesToScroll={1} slidesToShow={5} responsive={responsive}>
             {results.map((res, index) => (
               <ResultCard
                 key={index}
@@ -112,7 +139,7 @@ export default function Result({ activeButton }: ResultProps) {
     case "Kill":
       return (
         <ResultContainer>
-          <Carousel dots={false} slidesToScroll={1} slidesToShow={5}>
+          <Carousel dots={false} slidesToScroll={1} slidesToShow={5} responsive={responsive}>
             {results.map((res, index) => (
               <ResultCard
                 key={index}
@@ -127,7 +154,7 @@ export default function Result({ activeButton }: ResultProps) {
     case "Reas":
       return (
         <ResultContainer>
-          <Carousel dots={false} slidesToScroll={1} slidesToShow={5}>
+          <Carousel dots={false} slidesToScroll={1} slidesToShow={5} responsive={responsive}>
             {results.map((res, index) => (
               <ResultCard
                 key={index}
@@ -142,7 +169,7 @@ export default function Result({ activeButton }: ResultProps) {
     case "Mnb":
       return (
         <ResultContainer>
-          <Carousel dots={false} slidesToScroll={1} slidesToShow={5}>
+          <Carousel dots={false} slidesToScroll={1} slidesToShow={5} responsive={responsive}>
             {results.map((res, index) => (
               <ResultCard
                 key={index}

@@ -33,18 +33,17 @@ const NavMenuDropdown: FC<NavMenuDropdownProps> = ({
   return (
     <Box>
       <Button
-        id="mybutton"
         aria-controls={open ? "mymenu" : undefined}
         aria-haspopup="true"
         aria-expanded={open ? "true" : undefined}
         onClick={handleClick}
         endIcon={open ? <ArrowDropUp /> : <ArrowDropDown />}
         sx={{ color: "white" }}
+        disableRipple
       >
         {menuLabel}
       </Button>
       <Menu
-        id="mymenu"
         anchorEl={anchorEl}
         open={open}
         onClose={handleClose}

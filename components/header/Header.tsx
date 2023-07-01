@@ -47,21 +47,12 @@ export default function Header() {
       <CssBaseline />
       <AppBar component="nav" sx={{ bgcolor: "#17376D" }}>
         <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
-          <IconButton
-            // color="inherit"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: "none" }, color: "white" }}
-          >
-            <Menu />
-          </IconButton>
           <Link
             href="#"
             underline="none"
             sx={{
               color: "white",
-              display: { xs: "none", sm: "block" },
+              display: "block",
             }}
           >
             <Typography variant="h6" component="span">
@@ -81,10 +72,16 @@ export default function Header() {
                 menuItems={navItem.dropdownMenu}
               />
             ))}
-            <ButtonPrimary startIcon={<Person />}>
-              Masuk/Daftar
-            </ButtonPrimary>
+            <ButtonPrimary startIcon={<Person />}>Masuk/Daftar</ButtonPrimary>
           </Stack>
+          <IconButton
+            aria-label="open drawer"
+            edge="start"
+            onClick={handleDrawerToggle}
+            sx={{ ml: 2, display: { sm: "none" }, color: "white" }}
+          >
+            <Menu />
+          </IconButton>
         </Toolbar>
       </AppBar>
       <NavMobile

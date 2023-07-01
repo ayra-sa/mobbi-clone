@@ -34,7 +34,7 @@ a {
 }
 
 .custom-slider {
-  padding-inline: 3rem;
+  /* padding-inline: ; */
 }
 
 .custom-slider .slick-arrow::before {
@@ -52,11 +52,13 @@ a {
 }
 
 .custom-prev {
-  left: -52px !important;
+  left: -12px !important;
+  z-index: 19;
 }
 
 .custom-next {
-  right: -52px !important;
+  right: -12px !important;
+  z-index: 19;
 }
 
 .swiper-pagination {
@@ -67,8 +69,16 @@ a {
 }
 
 @media (min-width: '768px') {
-  .swiper-pagination {
-    text-align: left !important;
+  .custom-slider {
+    padding-inline: 3rem;
+  }
+
+  .custom-next {
+    right: -52px !important;
+  }
+
+  .custom-prev {
+    left: -52px !important;
   }
 }
 

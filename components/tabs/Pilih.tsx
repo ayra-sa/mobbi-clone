@@ -27,7 +27,7 @@ export default function Pilih({}: Props) {
 
           <Grid container spacing={2} sx={{ mt: 4 }}>
             {choices.map((choice, index) => (
-              <Grid item xs key={index}>
+              <Grid item xs={6} md={3} key={index}>
                 <ChoiceCard>
                   <ImageItem alt="image" image={choice.image} />
                 </ChoiceCard>

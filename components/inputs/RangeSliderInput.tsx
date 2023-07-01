@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Slider, TextField } from "@mui/material";
+import { Box, Slider, TextField, Typography } from "@mui/material";
 
 interface RangeSliderProps {
   value: [number | "", number | ""];
@@ -45,7 +45,41 @@ const RangeSliderInput: React.FC<RangeSliderProps> = ({
   };
 
   return (
-    <Box sx={{ width: 250 }}>
+    <Box sx={{ width: {xs: 300, md: 250} }}>
+      <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+        <Box>
+          <Typography variant="subtitle2">Min</Typography>
+          <TextField
+            value={value[0]}
+            size="small"
+            onChange={handleInputChange(0)}
+            onBlur={handleBlur(0)}
+            inputProps={{
+              step,
+              min,
+              max,
+              type: "number",
+              "aria-labelledby": "range-slider",
+            }}
+          />
+        </Box>
+        <Box>
+          <Typography variant="subtitle2">Max</Typography>
+          <TextField
+            value={value[1]}
+            size="small"
+            onChange={handleInputChange(1)}
+            onBlur={handleBlur(1)}
+            inputProps={{
+              step,
+              min,
+              max,
+              type: "number",
+              "aria-labelledby": "range-slider",
+            }}
+          />
+        </Box>
+      </Box>
       <Slider
         value={value.map((val) => (val === "" ? 0 : val))}
         onChange={handleSliderChange}
@@ -54,34 +88,6 @@ const RangeSliderInput: React.FC<RangeSliderProps> = ({
         // step={step}
         aria-labelledby="range-slider"
       />
-      <Box sx={{display: 'flex', justifyContent: 'space-between'}}>
-        <TextField
-          value={value[0]}
-          size="small"
-          onChange={handleInputChange(0)}
-          onBlur={handleBlur(0)}
-          inputProps={{
-            step,
-            min,
-            max,
-            type: "number",
-            "aria-labelledby": "range-slider",
-          }}
-        />
-        <TextField
-          value={value[1]}
-          size="small"
-          onChange={handleInputChange(1)}
-          onBlur={handleBlur(1)}
-          inputProps={{
-            step,
-            min,
-            max,
-            type: "number",
-            "aria-labelledby": "range-slider",
-          }}
-        />
-      </Box>
     </Box>
   );
 };

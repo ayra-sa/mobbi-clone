@@ -1,15 +1,12 @@
 import {
   Checkbox,
   FormControl,
-  InputLabel,
+  InputBase,
   ListItemText,
   MenuItem,
-  OutlinedInput,
   Select,
-  SelectChangeEvent,
   styled,
 } from "@mui/material";
-import { useState } from "react";
 
 type Option = {
   label: string;
@@ -21,7 +18,7 @@ type Props = {
   value: string[];
   placeholder?: string;
   // handleChange: (event: SelectChangeEvent<string | string[]>) => void;
-  handleChange: any
+  handleChange: any;
 };
 
 const ITEM_HEIGHT = 48;
@@ -30,41 +27,47 @@ const MenuProps = {
   PaperProps: {
     style: {
       maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-      // width: 250,
+      // width: "100%",
     },
   },
 };
 
-
-const SelectContainer = styled(Select)(({ theme }) => ({
-  borderRadius: "10px",
-  // backgroundColor: "red",
-  border: "0",
-  outline: "0",
-  // "&:hover": {
-  //   backgroundColor: alpha(theme.palette.common.white, 0.25),
-  // },
-  // [theme.breakpoints.up("sm")]: {
-  //   marginLeft: theme.spacing(1),
-  //   width: "auto",
-  // },
+const StyledInput = styled(InputBase)(({ theme }) => ({
+  color: "inherit",
+  "& .MuiInputBase-input": {
+    borderRadius: 4,
+    backgroundColor: "transparent",
+    border: "1px solid red",
+    padding: "10px 26px 10px 12px",
+    fontSize: ".8rem",
+    // [theme.breakpoints.up("md")]: {
+    //   width: "100%",
+    // },
+    "&:focus": {
+      borderRadius: 4,
+      backgroundColor: "transparent",
+      border: "0",
+      outline: "0",
+      // boxShadow: "0 0 0 0.2rem rgba(0,123,255,.25)",
+    },
+  },
 }));
 
 export default function SelectMultipleItem({
   options,
-  placeholder,
   value,
   handleChange,
 }: Props) {
   return (
-    <FormControl>
+    <FormControl sx={{ width: {xs: "100%", md: "20%"} }}>
       <Select
+        sx={{ height: "100%" }}
         variant="standard"
         multiple
         displayEmpty
         value={value}
         onChange={handleChange}
-        // input={<OutlinedInput color="primary" />}
+        input={<StyledInput />}
         renderValue={(selected) => {
           if (selected.length === 0) {
             return <span>Transmisi</span>;

@@ -6,7 +6,7 @@ import {
   Typography,
   styled,
 } from "@mui/material";
-import React from "react";
+import SampleImage from '/car.jpeg'
 
 type Props = {};
 
@@ -25,17 +25,17 @@ export default function CardNews({}: Props) {
         <CardMedia
           component="img"
           // height=""
-          image="https://placeimg.com/200/80/people"
-          alt="green iguana"
+          image="https://picsum.photos/200"
+          alt="image"
           sx={{
-            width: { xs: "100%", md: "60%" },
+            width: { xs: "100%" },
             height: { xs: "auto", md: "100%" },
           }}
         />
         <CardContent sx={{ display: { xs: "100%", md: "40%" } }}>
-          {/* <Typography variant="h5" component={'h4'} color={'bgNav'}>
+          <Typography variant="h5" component={'h4'} color={'bgNav'}>
             Mobil Bekas yang cocok untuk kehidupan
-          </Typography> */}
+          </Typography>
           <Typography variant="body2" component={"p"}>
             Lizards are a widespread group of squamate reptiles, with over 6,000
             species

@@ -41,7 +41,7 @@ export default function OtherContent({}: Props) {
         </Typography>
         <Grid container spacing={2} sx={{ mt: 4 }}>
           {data.map((data, index) => (
-            <Grid item xs key={index}>
+            <Grid item xs={12} md={3} key={index}>
               <OtherCard title={data.title} list={data.list} />
             </Grid>
           ))}
@@ -50,7 +50,7 @@ export default function OtherContent({}: Props) {
         <ButtonSecondary
           size="large"
           sx={{
-            width: "30%",
+            width: {xs: '60%', md: "30%"},
             display: "block",
             marginInline: "auto",
             mt: "2.5rem",

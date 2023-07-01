@@ -1,156 +1,113 @@
-import { Facebook, Instagram, Twitter, YouTube } from "@mui/icons-material";
+import { Facebook, FacebookOutlined, Instagram } from "@mui/icons-material";
 import {
   Box,
   Container,
   Grid,
   Typography,
-  Link,
-  List,
-  ListItem,
-  ListItemText,
   Stack,
   IconButton,
+  styled,
 } from "@mui/material";
-import ImageItem from "./ImageItem";
+
 
 type Props = {};
 
-const footerLinkMenuLokasi = [
-  { menu: "Batam", href: "" },
-  { menu: "Tanjung Pinang", href: "" },
-];
 
-const footerLinkMenuPelayanan = [
-  { menu: "Jual Mobil Bekas", href: "" },
-  { menu: "Jual Motor Bekas", href: "" },
-  { menu: "Beli Mobil Bekas", href: "" },
-  { menu: "Sewa Mobil", href: "" },
-  { menu: "Service Mobil", href: "" },
+const footerMenu = [
+  {
+    labelMenu: "mobbi",
+    listMenu: [
+      { menu: "Profil", link: "#" },
+      { menu: "About", link: "#" },
+      { menu: "News", link: "#" },
+      { menu: "Blog", link: "#" },
+      { menu: "Register", link: "#" },
+    ],
+  },
+  {
+    labelMenu: "Layanan",
+    listMenu: [
+      { menu: "Profil", link: "#" },
+      { menu: "About", link: "#" },
+      { menu: "News", link: "#" },
+      { menu: "Blog", link: "#" },
+    ],
+  },
+  {
+    labelMenu: "Blog",
+    listMenu: [
+      { menu: "Profil", link: "#" },
+      { menu: "Blog", link: "#" },
+      { menu: "Register", link: "#" },
+    ],
+  },
 ];
 
 const socialMedia = [
   {
     label: "facebook",
     link: "htpps://facebook.com",
-    icon: <Facebook />,
+    icon: <FacebookOutlined />,
   },
   {
     label: "instagram",
     link: "instagram.com",
     icon: <Instagram />,
   },
-  {
-    label: "twitter",
-    link: "twitter.com",
-    icon: <Twitter />,
-  },
-  {
-    label: "youtube",
-    link: "youtube.com",
-    icon: <YouTube />,
-  },
 ];
 
-const mitra = [
-  {
-    image: 'https://placeimg.com/150/50/any'
-  },
-  {
-    image: 'https://placeimg.com/150/50/any'
-  },
-  {
-    image: 'https://placeimg.com/150/50/any'
-  },
-  {
-    image: 'https://placeimg.com/150/50/any'
-  },
-  {
-    image: 'https://placeimg.com/150/50/any'
-  },
-  {
-    image: 'https://placeimg.com/150/50/any'
-  },
-]
+const IconWrapper = styled('a')(({theme}) => ({
+  backgroundColor: theme.palette.common.white,
+  color: theme.palette.text.secondary,
+  width: 40,
+  height: 40,
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  borderRadius: '100%'
+}))
 
 export default function Footer({}: Props) {
   return (
     <Box component="footer" sx={{ bgcolor: "#17376D", py: 4, color: "white" }}>
       <Container>
-        <Grid container spacing={5}>
-          <Grid item xs={12} sm={4}>
-            <Link href="#" underline="none" color={"inherit"}>
-              <Typography variant="h6">Logo</Typography>
-            </Link>
-            <Typography>
-              Pusat Jual Beli Mobil, Motor Bekas dan Service di Batam
-            </Typography>
-            <Stack direction={"row"} spacing={1}>
-              {socialMedia.map((socmed) => (
-                <IconButton
-                  key={socmed.label}
-                  href={socmed.link}
-                  color="inherit"
-                >
-                  {socmed.icon}
-                </IconButton>
-              ))}
-            </Stack>
-          </Grid>
-          <Grid item xs={12} sm={4}>
-            <Box sx={{ display: "flex", columnGap: "1rem" }}>
-              <Box>
-                <Typography variant="h6">Lokasi</Typography>
-                <List component="ul">
-                  {footerLinkMenuLokasi.map((menuLokasi) => (
-                    <ListItem
-                      key={menuLokasi.menu}
-                      component="li"
-                      sx={{ padding: "unset" }}
-                    >
-                      <Link
-                        href={menuLokasi.href}
-                        underline="none"
-                        color={"inherit"}
+        <Grid container spacing={4}>
+          <Grid item xs={12} md={6}>
+            <Grid container>
+              {footerMenu.map((menu) => (
+                <Grid key={menu.labelMenu} xs item>
+                  <Stack key={menu.labelMenu} spacing={1}>
+                    <Typography variant="body1" color={"footerHeading"}>
+                      {menu.labelMenu}
+                    </Typography>
+                    {menu.listMenu.map((list, index) => (
+                      <Typography
+                        key={index}
+                        variant="body2"
+                        component={"a"}
+                        href={list.link}
+                        color={"footerText"}
                       >
-                        <ListItemText primary={menuLokasi.menu} />
-                      </Link>
-                    </ListItem>
-                  ))}
-                </List>
-              </Box>
-              <Box>
-                <Typography variant="h6">Pelayanan</Typography>
-                <List component="ul">
-                  {footerLinkMenuPelayanan.map((menuPelayanan) => (
-                    <ListItem
-                      key={menuPelayanan.menu}
-                      component="li"
-                      sx={{ padding: "unset" }}
-                    >
-                      <Link
-                        href={menuPelayanan.href}
-                        underline="none"
-                        color={"inherit"}
-                      >
-                        <ListItemText primary={menuPelayanan.menu} />
-                      </Link>
-                    </ListItem>
-                  ))}
-                </List>
-              </Box>
-            </Box>
-          </Grid>
-          <Grid item xs={12} sm={4}>
-            <Typography variant="h6">Mitra Kami</Typography>
-            <Grid container spacing={1}>
-              {mitra.map((m, index) => (
-                <Grid key={index} item xs={4}>
-                  <ImageItem image={m.image} alt="mitra logo" />
+                        {list.menu}
+                      </Typography>
+                    ))}
+                  </Stack>
                 </Grid>
               ))}
             </Grid>
           </Grid>
+          <Grid item xs={12} md={6}>
+            <Typography variant="h4">Download Aplikasi Sekaran!</Typography>
+          </Grid>
         </Grid>
+        <Stack direction={'row'} spacing={3} sx={{my: '2rem'}}>
+          {socialMedia.map(socmed => (
+            <IconWrapper key={socmed.label} href={socmed.link} target="_blank">
+              {socmed.icon}
+            </IconWrapper>
+          ))}
+        </Stack>
+        <Typography variant="caption">© mobbi 2022 Hak Cipta Dilindungi.</Typography>
       </Container>
     </Box>
   );

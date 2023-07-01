@@ -4,7 +4,6 @@ import Hero from '@/components/sections/Hero'
 import TabsComponent from '@/components/tabs/TabsComponent'
 import NeedHelp from '@/components/sections/NeedHelp'
 import News from '@/components/sections/News'
-import Testimonial from '@/components/Testimonial'
 import Why from '@/components/sections/Why'
 
 
