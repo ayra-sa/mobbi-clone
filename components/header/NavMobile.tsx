@@ -1,17 +1,16 @@
-// import { NavItem } from '@/typing'
-import { NavMenu } from "@/typing";
 import {
   Box,
   Divider,
   Drawer,
-  Link,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemText,
+  IconButton,
+  Stack,
   Typography,
+  styled,
 } from "@mui/material";
 import React from "react";
+import { ButtonPrimary } from "../button/ButtonRounded";
+import { Close, Person } from "@mui/icons-material";
+import NavMenuDropdown from "./NavMenuDropdown";
 
 // type Props = {
 //   navItems: NavMenu[]
@@ -25,7 +24,28 @@ interface Props {
   window?: () => Window;
 }
 
-const drawerWidth = 240;
+const NavMobileContainer = styled(Drawer)(({ theme }) => ({
+  display: "block",
+  "& .MuiDrawer-paper": {
+    boxSizing: "border-box",
+    width: "70%",
+  },
+}));
+
+const navItems = [
+  {
+    menu: "Beli",
+    dropdownMenu: ["Beli Mobil", "Preorder", "Lelang"],
+  },
+  {
+    menu: "Jual",
+    dropdownMenu: ["Jual Mobil", "Preorder", "Lelang"],
+  },
+  {
+    menu: "Blog",
+    dropdownMenu: ["Blog", "Preorder"],
+  },
+];
 
 export default function NavMobile({
   mobileOpen,
@@ -33,55 +53,42 @@ export default function NavMobile({
   handleDrawerToggle,
 }: Props) {
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
-      <Link
-        href="#"
-        underline="none"
-        sx={{
-          display: "block",
-          color: "black",
-          p: 2,
-        }}
-      >
-        <Typography variant="h6" component="span">
-          Logonas
-        </Typography>
-      </Link>
-      <Divider />
-      <List>
-        {/* {navItems.map((item) => (
-              <ListItem key={item} disablePadding>
-                <ListItemButton sx={{ textAlign: "center" }}>
-                  <ListItemText primary={item} />
-                </ListItemButton>
-              </ListItem>
-            ))} */}
-      </List>
+    <Box>
+      <Box sx={{display: 'flex', justifyContent: 'flex-end', padding: '.4rem .8rem'}}>
+        <IconButton onClick={handleDrawerToggle} size="medium">
+          <Close />
+        </IconButton>
+      </Box>
+      <Stack spacing={3} sx={{ p: "2rem 1.2rem" }}>
+        {navItems.map((navItem, index) => (
+          <NavMenuDropdown
+            key={index}
+            menuLabel={navItem.menu}
+            menuItems={navItem.dropdownMenu}
+          />
+        ))}
+        <ButtonPrimary startIcon={<Person />}>Masuk/Daftar</ButtonPrimary>
+      </Stack>
     </Box>
   );
 
-  const container = window !== undefined ? () => window().document.body : undefined;
+  const container =
+    window !== undefined ? () => window().document.body : undefined;
 
   return (
     <Box component="nav">
-      <Drawer
+      <NavMobileContainer
         container={container}
         variant="temporary"
         open={mobileOpen}
+        anchor="right"
         onClose={handleDrawerToggle}
         ModalProps={{
           keepMounted: true, // Better open performance on mobile.
         }}
-        sx={{
-          display: { xs: "block", sm: "none" },
-          "& .MuiDrawer-paper": {
-            boxSizing: "border-box",
-            width: drawerWidth,
-          },
-        }}
       >
         {drawer}
-      </Drawer>
+      </NavMobileContainer>
     </Box>
   );
 }

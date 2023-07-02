@@ -82,9 +82,12 @@ const SearchInputWrap = styled("div")(({theme}) => ({
   width: '100%',
   height: '100%',
   overflow: 'hidden',
-  border: '1px solid red',
+  border: `1px solid ${theme.palette.text.primary}`,
+  borderRadius: '20px',
   [theme.breakpoints.up("md")]: {
+    borderRadius: '0',
     width: '30%',
+    border: "0",
   }
 }))
 
@@ -104,6 +107,13 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     fontSize: '.8rem'
   }
 }));
+
+const StyledPaperText = styled("p")(({theme}) => ({
+  fontSize: '.8rem',
+  [theme.breakpoints.up("md")]: {
+    fontSize: '1.2rem'
+  }
+}))
 
 export default function Find({}: Props) {
   const [keyword, setKeyword] = useState("");
@@ -174,7 +184,6 @@ export default function Find({}: Props) {
             <SelectMultipleItem
               options={options}
               value={optionValue}
-              // placeholder="Transmisi"
               handleChange={handleChangeSelect}
             />
           </SearchContainer>
@@ -187,9 +196,9 @@ export default function Find({}: Props) {
         <StyledPaper>
           <Box sx={{ display: "flex", gap: "10px", alignItems: 'center' }}>
             <Handshake />
-            <Typography variant="body1" component={"p"}>
+            <StyledPaperText>
               Belum tahu mobil impianmu? Coba fitur rekomendasi kami!
-            </Typography>
+            </StyledPaperText>
           </Box>
           <ArrowButton>
             <ArrowRightRounded />

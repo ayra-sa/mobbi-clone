@@ -6,9 +6,9 @@ type Props = {};
 
 export default function Hero({}: Props) {
   return (
-    <Box sx={{ bgcolor: "#17376D", pb: "4rem", pt: "7rem" }}>
-      <Container>
+    <Box sx={{ bgcolor: "#17376D", py: '4rem', px: '2rem' }}>
         <CarouselHero />
+      <Container>
       </Container>
     </Box>
   );

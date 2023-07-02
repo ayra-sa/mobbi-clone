@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, styled } from "@mui/material";
+import { Box, Link, styled } from "@mui/material";
 import Image from "next/image";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -15,6 +15,16 @@ const StyledImage = styled(Image)(({theme}) => ({
     borderRadius: 30,
   }
 }))
+
+const BoxContainer = styled(Box)({
+  transition: "transform 0.3s",
+  position: 'relative',
+  zIndex: '19',
+  padding: '4rem 0 2rem 0',
+  "&:hover": {
+    transform: "scale(1.1)",
+  },
+})
 
 const images = [
   { url: "https://placeimg.com/620/280/tech" },
@@ -49,9 +59,9 @@ export default function CarouselHero({}: Props) {
       {
         breakpoint: 600,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 1,
           slidesToScroll: 1,
-          initialSlide: 2,
+          // initialSlide: 2,
         },
       },
       {
@@ -69,16 +79,18 @@ export default function CarouselHero({}: Props) {
   return (
     <Slider {...settings}>
       {images.map((image, index) => (
-        <Box key={index}>
-          <StyledImage
-            alt="image"
-            src={image.url}
-            width={0}
-            height={0}
-            sizes="100vw"
-            loading="lazy"
-          />
-        </Box>
+        <BoxContainer key={index}>
+          <Link href="#">
+            <StyledImage
+              alt="image"
+              src={image.url}
+              width={0}
+              height={0}
+              sizes="100vw"
+              loading="lazy"
+            />
+          </Link>
+        </BoxContainer>
       ))}
     </Slider>
   );

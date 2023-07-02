@@ -1,16 +1,10 @@
 import React, { FC, MouseEvent, useState } from "react";
 import { Box, Button, Menu, MenuItem } from "@mui/material";
 import {
-  ArrowDownward,
   ArrowDropDown,
   ArrowDropUp,
-  ArrowUpward,
 } from "@mui/icons-material";
 
-type MenuItem = {
-//   string;
-  //   onClick: () => void;
-};
 
 type NavMenuDropdownProps = {
   menuLabel: string;
@@ -38,7 +32,7 @@ const NavMenuDropdown: FC<NavMenuDropdownProps> = ({
         aria-expanded={open ? "true" : undefined}
         onClick={handleClick}
         endIcon={open ? <ArrowDropUp /> : <ArrowDropDown />}
-        sx={{ color: "white" }}
+        sx={{ textTransform: 'capitalize', color: {xs: '#445a7a', md: "white"}, display: 'flex', justifyContent: 'space-between', width: {xs: '100%', md: 'auto'}}}
         disableRipple
       >
         {menuLabel}

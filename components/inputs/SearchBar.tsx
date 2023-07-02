@@ -30,8 +30,8 @@ export default function SearchBar({}: Props) {
     paddingRight: '1rem',
     marginLeft: 0,
     width: "100%",
-    display: 'flex',
     alignItems: 'center',
+    display: 'flex',
     [theme.breakpoints.up("sm")]: {
       marginLeft: theme.spacing(1),
       width: "auto",
@@ -51,6 +51,10 @@ export default function SearchBar({}: Props) {
 
   const StyledInputBase = styled(InputBase)(({ theme }) => ({
     color: "inherit",
+    width: '100%',
+    [theme.breakpoints.up("sm")]: {
+      width: 'auto'
+    },
     "& .MuiInputBase-input": {
       padding: theme.spacing(1, 1, 1, 0),
       borderRight: `1px solid ${theme.palette.text.primary}`,

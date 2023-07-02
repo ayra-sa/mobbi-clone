@@ -5,6 +5,7 @@ import {
   Container,
   useMediaQuery,
   useTheme,
+  styled,
 } from "@mui/material";
 import { ReactNode, SyntheticEvent, useState } from "react";
 import SectionWrapper from "../SectionWrapper";
@@ -52,6 +53,11 @@ const tabPanelData = [
   },
 ];
 
+
+const StyledTab = styled(Tab)(({theme}) => ({
+
+}))
+
 export default function TabsComponent() {
   const [value, setValue] = useState(0);
   const theme = useTheme();
@@ -80,10 +86,12 @@ export default function TabsComponent() {
                   icon={data.icon}
                   iconPosition={isMobile ? "top" : "start"}
                   sx={{
-                    flex: "1",
+                    // flex: "1",
                     textTransform: "capitalize",
                     backgroundColor: value === index ? "#F5F6FA" : "inherit",
-                    color: 'textTab'
+                    color: "textTab",
+                    width: "calc(100% / 5)",
+                    minWidth: 'unset'
                   }}
                   {...a11yProps(index)}
                 />
