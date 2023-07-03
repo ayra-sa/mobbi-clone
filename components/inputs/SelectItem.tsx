@@ -2,10 +2,7 @@ import {
   FormControl,
   MenuItem,
   Select,
-  SelectChangeEvent,
 } from "@mui/material";
-import React, { ChangeEvent, ReactNode, useState } from "react";
-import RangeSliderInput from "./RangeSliderInput";
 
 
 type Props = {

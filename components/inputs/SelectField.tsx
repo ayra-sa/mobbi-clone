@@ -4,7 +4,6 @@ import {
   InputBase,
   MenuItem,
   Select,
-  SelectChangeEvent,
   styled,
 } from "@mui/material";
 import React, { useState } from "react";
@@ -41,22 +40,6 @@ export default function SelectField({ defaultValue, options }: Props) {
           defaultValue={defaultValue}
           variant="standard"
           input={<StyledInput />}
-          // MenuProps={{
-          //   anchorOrigin: {
-          //     vertical: "bottom",
-          //     horizontal: "center",
-          //   },
-          //   transformOrigin: {
-          //     vertical: "top",
-          //     horizontal: "center",
-          //   },
-          //   PaperProps: {
-          //     style: {
-          //       maxHeight: 200,
-          //       width: 250,
-          //     },
-          //   },
-          // }}
         >
           {options.map((option) => (
             <MenuItem key={option} value={option}>

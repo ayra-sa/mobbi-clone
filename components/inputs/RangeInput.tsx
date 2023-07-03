@@ -1,4 +1,4 @@
-import { ArrowDropDown, ArrowDropDownCircleRounded, ArrowDropUp } from "@mui/icons-material";
+import { ArrowDropDown, ArrowDropUp } from "@mui/icons-material";
 import {
   InputBase,
   Paper,

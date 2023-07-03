@@ -1,4 +1,4 @@
-import { Box, Container, Toolbar } from "@mui/material";
+import { Box, Container} from "@mui/material";
 import CarouselHero from "../carousel/CarouselHero";
 
 type Props = {};

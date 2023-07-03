@@ -6,7 +6,6 @@ import {
   Typography,
   styled,
 } from "@mui/material";
-import SampleImage from '/car.jpeg'
 
 type Props = {};
 

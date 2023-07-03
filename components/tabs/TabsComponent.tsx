@@ -7,7 +7,7 @@ import {
   useTheme,
   styled,
 } from "@mui/material";
-import { ReactNode, SyntheticEvent, useState } from "react";
+import { SyntheticEvent, useState } from "react";
 import SectionWrapper from "../SectionWrapper";
 import {
   CarRental,

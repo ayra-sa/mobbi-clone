@@ -6,7 +6,6 @@ import {
   InputBase,
   Paper,
   SelectChangeEvent,
-  Typography,
   alpha,
   styled,
 } from "@mui/material";

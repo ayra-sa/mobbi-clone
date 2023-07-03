@@ -1,10 +1,8 @@
 import {
   Box,
-  Divider,
   Drawer,
   IconButton,
   Stack,
-  Typography,
   styled,
 } from "@mui/material";
 import React from "react";

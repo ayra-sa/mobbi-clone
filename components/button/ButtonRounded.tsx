@@ -14,25 +14,25 @@ type Props = {
     | "warning";
   onClick?: () => void;
   disabled?: boolean;
-  startIcon?: any
-  size?: 'large' | 'small' | 'medium'
-  sx?: any
+  startIcon?: any;
+  size?: "large" | "small" | "medium";
+  sx?: any;
 };
 
 const StyledButtonPrimary = styled(Button)(({ theme }) => ({
   color: theme.palette.common.white,
   borderRadius: "30px",
   textTransform: "capitalize",
-//   width: '30%',
-  padding: 'auto .8rem'
+  //   width: '30%',
+  padding: "auto .8rem",
 }));
 
 const StyledButtonSecondary = styled(Button)(({ theme }) => ({
   color: theme.palette.common.white,
   borderRadius: "30px",
   textTransform: "capitalize",
-//   width: '30%',
-  padding: '.8rem'
+  //   width: '30%',
+  padding: ".8rem",
 }));
 
 export function ButtonSecondary({ children, ...props }: Props) {
@@ -43,10 +43,10 @@ export function ButtonSecondary({ children, ...props }: Props) {
   );
 }
 
-export function ButtonPrimary({children, ...props}: Props) {
-    return (
-        <StyledButtonPrimary variant="contained" color="primary" {...props}>
-            {children}
-        </StyledButtonPrimary>
-    )
+export function ButtonPrimary({ children, ...props }: Props) {
+  return (
+    <StyledButtonPrimary variant="contained" color="primary" {...props}>
+      {children}
+    </StyledButtonPrimary>
+  );
 }

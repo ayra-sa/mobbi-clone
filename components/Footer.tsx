@@ -1,11 +1,10 @@
-import { Facebook, FacebookOutlined, Instagram } from "@mui/icons-material";
+import { FacebookOutlined, Instagram } from "@mui/icons-material";
 import {
   Box,
   Container,
   Grid,
   Typography,
   Stack,
-  IconButton,
   styled,
 } from "@mui/material";
 

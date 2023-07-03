@@ -5,66 +5,20 @@ import { Heading3 } from "../typography/Text";
 
 type Props = {};
 
-const slides = [
-  {
-    image: "https://placeimg.com/640/480/tech",
-    title: "Trik Membeli Mobil Bekas",
-    link: "#",
-  },
-  {
-    image: "https://placeimg.com/640/480/tech",
-    title: "Trik Membeli Mobil Bekas",
-    link: "#",
-  },
-  {
-    image: "https://placeimg.com/640/480/tech",
-    title: "Trik Membeli Mobil Bekas",
-    link: "#",
-  },
-  {
-    image: "https://placeimg.com/640/480/tech",
-    title: "Trik Membeli Mobil Bekas",
-    link: "#",
-  },
-  {
-    image: "https://placeimg.com/640/480/tech",
-    title: "Trik Membeli Mobil Bekas",
-    link: "#",
-  },
-  {
-    image: "https://placeimg.com/640/480/tech",
-    title: "Trik Membeli Mobil Bekas",
-    link: "#",
-  },
-  {
-    image: "https://placeimg.com/640/480/tech",
-    title: "Trik Membeli Mobil Bekas",
-    link: "#",
-  },
-  {
-    image: "https://placeimg.com/640/480/tech",
-    title: "Trik Membeli Mobil Bekas",
-    link: "#",
-  },
-  {
-    image: "https://placeimg.com/640/480/tech",
-    title: "Trik Membeli Mobil Bekas",
-    link: "#",
-  },
-];
-
 export default function News({}: Props) {
   return (
     <SectionWrapper bgColor="#EBF4F3">
       <Container>
-        <Box sx={{ display: "flex", justifyContent: "space-between", mb: "2rem" }}>
+        <Box
+          sx={{ display: "flex", justifyContent: "space-between", mb: "2rem" }}
+        >
           <Heading3>Berita, Tips Review</Heading3>
           <Link href="#" underline="none">
             Lainya
           </Link>
         </Box>
-        <Grid container spacing={2} >
-          <Grid item xs={12} md={8} lg={7} >
+        <Grid container spacing={2}>
+          <Grid item xs={12} md={8} lg={7}>
             <CardNews />
           </Grid>
           <Grid
@@ -76,10 +30,10 @@ export default function News({}: Props) {
             spacing={2}
             direction="column"
           >
-            <Grid item xs >
+            <Grid item xs>
               <CardNews />
             </Grid>
-            <Grid item xs >
+            <Grid item xs>
               <CardNews />
             </Grid>
           </Grid>

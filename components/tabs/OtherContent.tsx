@@ -41,7 +41,7 @@ export default function OtherContent({}: Props) {
         </Typography>
         <Grid container spacing={2} sx={{ mt: 4 }}>
           {data.map((data, index) => (
-            <Grid item xs={12} md={3} key={index}>
+            <Grid item xs={12} md={4} key={index}>
               <OtherCard title={data.title} list={data.list} />
             </Grid>
           ))}

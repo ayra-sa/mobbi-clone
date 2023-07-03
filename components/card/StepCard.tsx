@@ -1,6 +1,5 @@
 import { Box, Paper, Typography, styled } from "@mui/material";
 import React from "react";
-import ImageItem from "../ImageItem";
 import Image from "next/image";
 
 type Props = {
